@@ -39,7 +39,7 @@ aside {
 }
 
 .game-container {
-  background-color: rgb(226, 135, 226);
+  background-color: rgb(168, 31, 168, .6);;
   text-align: center;
   width: 70%;
   color: #FFF;
@@ -61,23 +61,31 @@ aside {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  margin-top: 75;
+  margin-top: 100px;
 }
 
-.top-container,
-.bottom-container {
+.top-container-btn,
+.bottom-container-btn {
+  color: #FFF;
   font-size: 18px;
-}
-
-.top-container {
+  background-color: rgb(168, 31, 168, .3);
+  border: none;
   width: 250px;
   height: 200px;
   margin-top: 10px;
 }
 
-.bottom-container {
-  width: 250px;
-  height: 250px;
-  margin-bottom: -28px;
-  margin-top: 10px;
+.top-container-btn:hover,
+.bottom-container-btn:hover {
+  background-color: rgb(168, 31, 168, .5);
+  transition: 0.4s;
 }
+
+.bottom-container-btn {
+  margin-top: 40px;
+}
+
+.game-text {
+  margin: 3px;
+}
+
