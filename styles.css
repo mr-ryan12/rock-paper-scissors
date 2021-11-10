@@ -12,6 +12,8 @@ main {
   display: flex;
   flex-direction: column;
   background-color: rgb(226, 135, 226, .7);
+  color: #FFF;
+  font-size: 20px;
   align-items: center;
   text-align: center;
   height: 100vh;
@@ -27,4 +29,16 @@ aside {
   background-color: rgb(226, 135, 226);
   text-align: center;
   width: 70%;
+  color: #FFF;
+  font-weight: bolder;
+}
+
+.header {
+  font-size: 75px;
+  margin-bottom: 20px;
+}
+
+.choose-your-game {
+  font-size: 30px;
+  margin-top: 5px
 }
