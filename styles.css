@@ -61,6 +61,7 @@ aside {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  margin-top: 75;
 }
 
 .top-container,
@@ -78,4 +79,5 @@ aside {
   width: 250px;
   height: 250px;
   margin-bottom: -28px;
+  margin-top: 10px;
 }
