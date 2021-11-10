@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="./styles.css">
     <title>Rock Paper Scissors</title>
   </head>
@@ -19,12 +20,7 @@
       <div class="game-container">
         <h1 class="header">Rock, Paper, Scissors</h1>
         <h3 class="choose-your-game">Choose your game!</h3>
-        <div class="fighter-selection-container">
-          <button class="rock-selection"></button>
-          <button class="paper-selection"></button>
-          <button class="scissors-selection"></button>
-        </div>
-        <div class="game-selection-container hidden">
+        <div class="game-selection-container" id="gameSelectionContainer">
           <button class="classic-game-btn" id="classicGameBtn">
             <h3>🪨CLASSIC✂️</h3>
             <p class="game-text">rock > scissors</p>
@@ -39,6 +35,11 @@
             <p class="game-text">alien > scissors & rock</p>
           </button>
         </div>
+        <div class="fighter-selection-container hidden" id="fighterSelectionContainer">
+          <button class="rock-selection"></button>
+          <button class="paper-selection"></button>
+          <button class="scissors-selection"></button>
+        </div>
       </div>
       <div class="left-container">
         <aside>
@@ -47,6 +48,9 @@
           <h4>Wins: 0</h4>
         </aside>
       </div>
-    </main>    
+    </main>
+    <script type="text/javascript" src="player.js"></script>
+    <script type="text/javascript" src="game.js"></script>
+    <script type="text/javascript" src="main.js"></script>
   </body>
 </html>
