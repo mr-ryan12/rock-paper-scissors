@@ -55,3 +55,27 @@ aside {
   font-size: 30px;
   margin-top: 5px
 }
+
+.game-selection-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.top-container,
+.bottom-container {
+  font-size: 18px;
+}
+
+.top-container {
+  width: 250px;
+  height: 200px;
+  margin-top: 10px;
+}
+
+.bottom-container {
+  width: 250px;
+  height: 250px;
+  margin-bottom: -28px;
+}
