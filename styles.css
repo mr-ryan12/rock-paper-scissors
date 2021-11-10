@@ -80,6 +80,7 @@ aside {
   color: rgb(168, 31, 168);
   background-color: #FFF;
   transition: 0.4s;
+  cursor: pointer;
 }
 
 .bottom-container-btn {
@@ -89,4 +90,3 @@ aside {
 .game-text {
   margin: 3px;
 }
-
