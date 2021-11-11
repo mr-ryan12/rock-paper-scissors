@@ -13,7 +13,17 @@ class Player {
 
   }
 
+  assignHumanPlayerSelection() {
+    if (rockSelectionButton.classList.contains('selected')) {
+      this.selection = 'rock';
+    } else if (paperSelectionButton.contains('selected')) {
+      this.selection = 'paper';
+    } else if (scissorsSelectionButton.contains('selected')) {
+      this.selection = 'scissors';
+    } 
+  }
+
   takeTurn() {
-    
+    rockSelectionButton.classList.add('selected');
   }
 }

@@ -15,7 +15,7 @@ var scissorsSelectionButton = document.getElementById('scissorsSelection');
 // Event Listeners
 classicGameButton.addEventListener('click', displayClassicGame);
 difficultGameButton.addEventListener('click', displayDifficultGame);
-rockSelectionButton.addEventListener('click', checkRockSelection);
+rockSelectionButton.addEventListener('click', humanSelection);
 paperSelectionButton.addEventListener('click', checkPaperSelection);
 scissorsSelectionButton.addEventListener('click', checkScissorsSelection);
 lizardSelectionButton.addEventListener('click', checkLizardSelection);
@@ -68,8 +68,8 @@ function checkAlienSelection() {
   alienSelectionButton.classList.add('selected');
 }
 
-function assignPlayerSelection() {
-  if (rockSelectionButton.classList.contains('selected')) {
-    
-  }
+function humanSelection() {
+  checkRockSelection();
+  var humanPlayer = new Player('human', 'other things');
+  humanPlayer.assignHumanPlayerSelection();
 }
