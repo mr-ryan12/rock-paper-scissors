@@ -57,7 +57,8 @@ aside {
 
 .choose-your-game {
   font-size: 30px;
-  margin-top: 5px
+  margin-top: 5px;
+  font-weight: lighter;
 }
 
 .game-selection-container {
@@ -84,6 +85,9 @@ aside {
   color: rgb(168, 31, 168);
   background-color: #FFF;
   transition: 0.4s;
+}
+
+button:hover {
   cursor: pointer;
 }
 
@@ -132,6 +136,18 @@ aside {
 
 .alien-selection {
   background-image: url('./assets/happy-alien.png');
+}
+
+.winner-display-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40%;
+}
+
+.display-human-selection,
+.display-computer-selection {
+  height: 70%;
 }
 
 .hidden {
