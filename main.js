@@ -2,8 +2,8 @@
 var gameSelectionContainer = document.getElementById('gameSelectionContainer');
 var fighterSelectionContainer = document.getElementById('fighterSelectionContainer');
 var chooseYourGameText = document.getElementById('chooseYourGame');
-var displayHumanSelection = document.getElementById('displayHumanSelection');
-var displayComputerSelection = document.getElementById('displayComputerSelection');
+var humanSelectionImage = document.getElementById('displayHumanSelection');
+var computerSelectionImage = document.getElementById('displayComputerSelection');
 var winnerDisplayContainer = document.getElementById('winnerDisplayContainer');
 
 // Variables targeting button elements
@@ -102,6 +102,16 @@ function displayWinnerText() {
   }
 }
 
+function displaySelections() {
+  if (currentGame.player1.humanSelection === 'rock') {
+    displayHumanSelection.src = './assets/happy-rocks.png';
+  } else if (currentGame.player1.humanSelection === 'paper') {
+    displayHumanSelection.src = './assets/happy-paper.png';
+  } else if (currentGame.player1.humanSelection === 'scissors') {
+    displayHumanSelection.src = './assets/scissors-copy.png';
+  }
+}
+
 function displayWinnerContainer() {
   hideElement(gameSelectionContainer);
   hideElement(fighterSelectionContainer);
@@ -109,4 +119,5 @@ function displayWinnerContainer() {
   hideElement(alienSelectionButton);
   displayElement(winnerDisplayContainer);
   displayWinnerText();
+  displaySelections();
 }
