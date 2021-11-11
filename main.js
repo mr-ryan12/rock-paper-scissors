@@ -2,6 +2,9 @@
 var gameSelectionContainer = document.getElementById('gameSelectionContainer');
 var fighterSelectionContainer = document.getElementById('fighterSelectionContainer');
 var chooseYourGameText = document.getElementById('chooseYourGame');
+var displayHumanSelection = document.getElementById('displayHumanSelection');
+var displayComputerSelection = document.getElementById('displayComputerSelection');
+var winnerDisplayContainer = document.getElementById('winnerDisplayContainer');
 
 // Variables targeting button elements
 var classicGameButton = document.getElementById('classicGameBtn');
@@ -94,4 +97,5 @@ function displayWinnerContainer() {
   hideElement(fighterSelectionContainer);
   hideElement(lizardSelectionButton);
   hideElement(alienSelectionButton);
+  displayElement(winnerDisplayContainer);
 }

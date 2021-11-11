@@ -141,6 +141,11 @@ aside {
   height: 40%;
 }
 
+.display-human-selection,
+.display-computer-selection {
+  height: 70%;
+}
+
 .hidden {
   display: none;
 }
