@@ -114,13 +114,6 @@ class Game {
     } else {
       this.draw = true;
     }
-    console.log(humanSelection);
-console.log(computerSelection);
-console.log(this.player1.wins);
-console.log(this.player2.wins);
-console.log(this.humanWon);
-console.log(this.computerWon);
-console.log(this.draw);
   }
 
   resetPlayers() {
