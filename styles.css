@@ -1,3 +1,7 @@
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
 body {
   margin: 0;
 }
@@ -39,7 +43,7 @@ aside {
 }
 
 .game-container {
-  background-color: rgb(168, 31, 168, .6);;
+  background-color: rgb(168, 31, 168, .6);
   text-align: center;
   width: 70%;
   color: #FFF;
@@ -64,8 +68,8 @@ aside {
   margin-top: 100px;
 }
 
-.top-container-btn,
-.bottom-container-btn {
+.classic-game-btn,
+.difficult-game-btn {
   color: #FFF;
   font-size: 18px;
   background-color: rgb(168, 31, 168, .3);
@@ -75,14 +79,15 @@ aside {
   margin-top: 10px;
 }
 
-.top-container-btn:hover,
-.bottom-container-btn:hover {
+.classic-game-btn:hover,
+.difficult-game-btn:hover {
   color: rgb(168, 31, 168);
   background-color: #FFF;
   transition: 0.4s;
+  cursor: pointer;
 }
 
-.bottom-container-btn {
+.difficult-game-btn {
   margin-top: 40px;
 }
 
@@ -90,3 +95,45 @@ aside {
   margin: 3px;
 }
 
+.fighter-selection-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30%;
+}
+
+.rock-selection,
+.paper-selection,
+.scissors-selection,
+.lizard-selection,
+.alien-selection {
+  background: none;
+  border: none;
+  background-size: 100%;
+  height: 100px;
+  width: 100px;
+}
+
+.rock-selection {
+  background-image: url('./assets/happy-rocks.png');
+}
+
+.paper-selection {
+  background-image: url('./assets/happy-paper.png');
+}
+
+.scissors-selection {
+  background-image: url('./assets/scissors-copy.png');
+}
+
+.lizard-selection {
+  background-image: url('./assets/lizard.png');
+}
+
+.alien-selection {
+  background-image: url('./assets/happy-alien.png');
+}
+
+.hidden {
+  display: none;
+}
