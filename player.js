@@ -23,7 +23,7 @@ class Player {
     } 
   }
 
-  assignComputerSelection() {
+  assignComputerPlayerSelection() {
     var selections = ['rock', 'paper', 'scissors'];
     var getRandomIndex = Math.floor(Math.random() * selections.length);
 

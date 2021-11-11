@@ -70,6 +70,5 @@ function checkAlienSelection() {
 
 function humanSelection() {
   checkRockSelection();
-  var humanPlayer = new Player('human', 'other things');
-  humanPlayer.assignHumanPlayerSelection();
+  currentGame.gamePlay();
 }
