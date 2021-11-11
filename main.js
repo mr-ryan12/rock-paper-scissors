@@ -80,7 +80,7 @@ function checkAlienSelection() {
 function gamePlay() {
   currentGame.gamePlay();
   displayWinnerContainer();
-  resetGame();
+  // resetGame();
 }
 
 function resetGame() {
@@ -92,10 +92,19 @@ function resetGame() {
   alienSelectionButton.classList.remove('selected');
 }
 
+function displayWinnerText() {
+  if (currentGame.humanWon) {
+    chooseYourGameText.innerText = `${currentGame.player1.token}Human won this round!${currentGame.player1.token}`;
+  } else if (currentGame.computerWon) {
+    chooseYourGameText.innerText = `${currentGame.player2.token}Computer won this round!${currentGame.player2.token}`;
+  }
+}
+
 function displayWinnerContainer() {
   hideElement(gameSelectionContainer);
   hideElement(fighterSelectionContainer);
   hideElement(lizardSelectionButton);
   hideElement(alienSelectionButton);
   displayElement(winnerDisplayContainer);
+  displayWinnerText();
 }
