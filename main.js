@@ -41,6 +41,7 @@ function displayClassicGame() {
 }
 
 function displayDifficultGame() {
+  difficultGameButton.classList.add('selected');
   hideElement(gameSelectionContainer);
   displayElement(fighterSelectionContainer);
   displayElement(lizardSelectionButton);
@@ -60,14 +61,17 @@ function checkPaperSelection() {
 
 function checkScissorsSelection() {
   scissorsSelectionButton.classList.add('selected');
+  gamePlay();
 }
 
 function checkLizardSelection() {
   lizardSelectionButton.classList.add('selected');
+  gamePlay();
 }
 
 function checkAlienSelection() {
   alienSelectionButton.classList.add('selected');
+  gamePlay();
 }
 
 function gamePlay() {

@@ -20,12 +20,22 @@ class Player {
       return this.humanSelection = 'paper';
     } else if (scissorsSelectionButton.classList.contains('selected')) {
       return this.humanSelection = 'scissors';
-    } 
+    } else if (lizardSelectionButton.classList.contains('selected')) {
+      return this.humanSelection = 'lizard';
+    } else if (alienSelectionButton.classList.contains('selected')) {
+      return this.humanSelection = 'alien';
+    }
   }
 
   assignComputerPlayerSelection() {
     var selections = ['rock', 'paper', 'scissors'];
-    var getRandomIndex = Math.floor(Math.random() * selections.length);
+    var getRandomIndex;
+
+    if (difficultGameButton.classList.contains('selected')) {
+      selections.push('lizard', 'alien');
+    }
+
+    getRandomIndex = Math.floor(Math.random() * selections.length);
 
     return this.computerSelection = selections[getRandomIndex];
   }
