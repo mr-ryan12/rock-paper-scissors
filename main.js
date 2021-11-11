@@ -80,7 +80,7 @@ function checkAlienSelection() {
 function gamePlay() {
   currentGame.gamePlay();
   displayWinnerContainer();
-  // resetGame();
+  resetGame();
 }
 
 function resetGame() {
