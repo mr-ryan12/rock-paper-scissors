@@ -97,6 +97,8 @@ function displayWinnerText() {
     chooseYourGameText.innerText = `${currentGame.player1.token}Human won this round!${currentGame.player1.token}`;
   } else if (currentGame.computerWon) {
     chooseYourGameText.innerText = `${currentGame.player2.token}Computer won this round!${currentGame.player2.token}`;
+  } else if (currentGame.draw) {
+    chooseYourGameText.innerText = `😬It's a draw!😬`;
   }
 }
 
