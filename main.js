@@ -5,6 +5,7 @@ var gameSelectionContainer = document.getElementById('gameSelectionContainer');
 var fighterSelectionContainer = document.getElementById('fighterSelectionContainer');
 var lizardSelectionButton = document.getElementById('lizardSelectionBtn');
 var alienSelectionButton = document.getElementById('alienSelectionBtn');
+
 // Event Listeners
 classicGameButton.addEventListener('click', displayClassicGame);
 difficultGameButton.addEventListener('click', displayDifficultGame);
