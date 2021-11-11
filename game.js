@@ -6,6 +6,8 @@ class Game {
   }
 
   gamePlay() {
-    
+    var humanSelection = this.player1.assignHumanPlayerSelection();
+
+    return humanSelection;
   }
 }
