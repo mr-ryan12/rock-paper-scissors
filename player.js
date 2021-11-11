@@ -15,15 +15,22 @@ class Player {
 
   assignHumanPlayerSelection() {
     if (rockSelectionButton.classList.contains('selected')) {
-      this.selection = 'rock';
+      this.humanSelection = 'rock';
     } else if (paperSelectionButton.contains('selected')) {
-      this.selection = 'paper';
+      this.humanSelection = 'paper';
     } else if (scissorsSelectionButton.contains('selected')) {
-      this.selection = 'scissors';
+      this.humanSelection = 'scissors';
     } 
   }
 
+  assignComputerSelection() {
+    var selections = ['rock', 'paper', 'scissors'];
+    var getRandomIndex = Math.floor(Math.random() * selections.length);
+
+    this.computerSelection = selections[getRandomIndex];
+  }
+
   takeTurn() {
-    rockSelectionButton.classList.add('selected');
+    
   }
 }
