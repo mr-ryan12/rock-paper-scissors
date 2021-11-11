@@ -16,9 +16,9 @@ class Player {
   assignHumanPlayerSelection() {
     if (rockSelectionButton.classList.contains('selected')) {
       return this.humanSelection = 'rock';
-    } else if (paperSelectionButton.contains('selected')) {
+    } else if (paperSelectionButton.classList.contains('selected')) {
       return this.humanSelection = 'paper';
-    } else if (scissorsSelectionButton.contains('selected')) {
+    } else if (scissorsSelectionButton.classList.contains('selected')) {
       return this.humanSelection = 'scissors';
     } 
   }

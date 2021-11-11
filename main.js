@@ -15,7 +15,7 @@ var scissorsSelectionButton = document.getElementById('scissorsSelection');
 // Event Listeners
 classicGameButton.addEventListener('click', displayClassicGame);
 difficultGameButton.addEventListener('click', displayDifficultGame);
-rockSelectionButton.addEventListener('click', humanSelection);
+rockSelectionButton.addEventListener('click', checkRockSelection);
 paperSelectionButton.addEventListener('click', checkPaperSelection);
 scissorsSelectionButton.addEventListener('click', checkScissorsSelection);
 lizardSelectionButton.addEventListener('click', checkLizardSelection);
@@ -50,10 +50,12 @@ function displayDifficultGame() {
 
 function checkRockSelection() {
   rockSelectionButton.classList.add('selected');
+  gamePlay();
 }
 
 function checkPaperSelection() {
   paperSelectionButton.classList.add('selected');
+  gamePlay();
 }
 
 function checkScissorsSelection() {
@@ -68,7 +70,6 @@ function checkAlienSelection() {
   alienSelectionButton.classList.add('selected');
 }
 
-function humanSelection() {
-  checkRockSelection();
+function gamePlay() {
   currentGame.gamePlay();
 }
