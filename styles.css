@@ -104,7 +104,9 @@ aside {
 
 .rock-selection,
 .paper-selection,
-.scissors-selection {
+.scissors-selection,
+.lizard-selection,
+.alien-selection {
   background: none;
   border: none;
   background-size: 100%;
@@ -122,6 +124,14 @@ aside {
 
 .scissors-selection {
   background-image: url('./assets/scissors-copy.png');
+}
+
+.lizard-selection {
+  background-image: url('./assets/lizard.png');
+}
+
+.alien-selection {
+  background-image: url('./assets/happy-alien.png');
 }
 
 .hidden {
