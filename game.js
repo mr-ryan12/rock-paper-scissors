@@ -73,4 +73,9 @@ class Game {
       this.draw = true;
     }
   }
+
+  resetPlayers() {
+    this.player1.humanSelection = '';
+    this.player2.computerSelection = '';
+  }
 }

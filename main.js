@@ -76,4 +76,22 @@ function checkAlienSelection() {
 
 function gamePlay() {
   currentGame.gamePlay();
+  displayWinnerContainer();
+  resetGame();
+}
+
+function resetGame() {
+  currentGame.resetPlayers();
+  rockSelectionButton.classList.remove('selected');
+  paperSelectionButton.classList.remove('selected');
+  scissorsSelectionButton.classList.remove('selected');
+  lizardSelectionButton.classList.remove('selected');
+  alienSelectionButton.classList.remove('selected');
+}
+
+function displayWinnerContainer() {
+  hideElement(gameSelectionContainer);
+  hideElement(fighterSelectionContainer);
+  hideElement(lizardSelectionButton);
+  hideElement(alienSelectionButton);
 }

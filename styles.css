@@ -134,6 +134,13 @@ aside {
   background-image: url('./assets/happy-alien.png');
 }
 
+.winner-display-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40%;
+}
+
 .hidden {
   display: none;
 }
