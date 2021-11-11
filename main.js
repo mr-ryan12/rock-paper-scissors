@@ -94,21 +94,39 @@ function resetGame() {
 
 function displayWinnerText() {
   if (currentGame.humanWon) {
-    chooseYourGameText.innerText = `${currentGame.player1.token}Human won this round!${currentGame.player1.token}`;
+    chooseYourGameText.innerText = `${currentGame.player1.token} Human won this round! ${currentGame.player1.token}`;
   } else if (currentGame.computerWon) {
-    chooseYourGameText.innerText = `${currentGame.player2.token}Computer won this round!${currentGame.player2.token}`;
+    chooseYourGameText.innerText = `${currentGame.player2.token} Computer won this round! ${currentGame.player2.token}`;
   } else if (currentGame.draw) {
-    chooseYourGameText.innerText = `😬It's a draw!😬`;
+    chooseYourGameText.innerText = `😬 It's a draw! 😬`;
   }
 }
 
-function displaySelections() {
+function displayHumanFighter() {
   if (currentGame.player1.humanSelection === 'rock') {
-    displayHumanSelection.src = './assets/happy-rocks.png';
+    humanSelectionImage.src = './assets/happy-rocks.png';
   } else if (currentGame.player1.humanSelection === 'paper') {
-    displayHumanSelection.src = './assets/happy-paper.png';
+    humanSelectionImage.src = './assets/happy-paper.png';
   } else if (currentGame.player1.humanSelection === 'scissors') {
-    displayHumanSelection.src = './assets/scissors-copy.png';
+    humanSelectionImage.src = './assets/scissors-copy.png';
+  } else if (currentGame.player1.humanSelection === 'lizard') {
+    humanSelectionImage.src = './assets/lizard.png';
+  } else if (currentGame.player1.humanSelection === 'alien') {
+    humanSelectionImage.src = './assets/happy-alien.png';
+  }
+}
+
+function displayComputerFighter() {
+  if (currentGame.player2.computerSelection === 'rock') {
+    computerSelectionImage.src = './assets/happy-rocks.png';
+  } else if (currentGame.player2.computerSelection === 'paper') {
+    computerSelectionImage.src = './assets/happy-paper.png';
+  } else if (currentGame.player2.computerSelection === 'scissors') {
+    computerSelectionImage.src = './assets/scissors-copy.png';
+  } else if (currentGame.player2.computerSelection === 'lizard') {
+    computerSelectionImage.src = './assets/lizard.png';
+  } else if (currentGame.player2.computerSelection === 'alien') {
+    computerSelectionImage.src = './assets/happy-alien.png';
   }
 }
 
@@ -119,5 +137,6 @@ function displayWinnerContainer() {
   hideElement(alienSelectionButton);
   displayElement(winnerDisplayContainer);
   displayWinnerText();
-  displaySelections();
+  displayHumanFighter();
+  displayComputerFighter();
 }
