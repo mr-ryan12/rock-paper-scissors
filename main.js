@@ -38,6 +38,7 @@ function hideElement(element) {
 }
 
 function displayClassicGame() {
+  classicGameButton.classList.add('selected');
   hideElement(gameSelectionContainer);
   displayElement(fighterSelectionContainer);
   chooseYourGameText.innerText = 'Choose your fighter!';
@@ -90,6 +91,8 @@ function resetGame() {
   scissorsSelectionButton.classList.remove('selected');
   lizardSelectionButton.classList.remove('selected');
   alienSelectionButton.classList.remove('selected');
+  changeToFighterSelectionView();
+  
 }
 
 function displayWinnerText() {
@@ -139,4 +142,22 @@ function displayWinnerContainer() {
   displayWinnerText();
   displayHumanFighter();
   displayComputerFighter();
+}
+
+function changeToFighterSelectionView() {
+  if (classicGameButton.classList.contains('selected')) {
+    setTimeout(hideClassicWinnerDisplayContainer, 2500);
+  } else if (difficultGameButton.classList.contains('selected')) {
+    setTimeout(hideDifficultWinnerDisplayContainer, 2500);
+  }
+}
+
+function hideClassicWinnerDisplayContainer() {
+  displayClassicGame();
+  winnerDisplayContainer.classList.add('hidden');
+}
+
+function hideDifficultWinnerDisplayContainer() {
+  displayDifficultGame();
+  winnerDisplayContainer.classList.add('hidden');
 }
