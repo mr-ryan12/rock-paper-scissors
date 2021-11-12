@@ -20,6 +20,7 @@ var scissorsSelectionButton = document.getElementById('scissorsSelection');
 var changeGameButton = document.getElementById('changeGameBtn');
 
 // Event Listeners
+window.addEventListener('load', displayWins);
 classicGameButton.addEventListener('click', displayClassicGame);
 difficultGameButton.addEventListener('click', displayDifficultGame);
 rockSelectionButton.addEventListener('click', checkRockSelection);
@@ -190,6 +191,6 @@ function displayGameSelection() {
 }
 
 function displayWins() {
-  humanWins.innerText = `${currentGame.player1.wins}`;
-  computerWins.innerText = `${currentGame.player2.wins}`;
+  humanWins.innerText = `${currentGame.player1.retrieveWinsFromStorage().playerOne}`;
+  computerWins.innerText = `${currentGame.player2.retrieveWinsFromStorage().playerTwo}`;
 }
