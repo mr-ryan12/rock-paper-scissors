@@ -80,6 +80,7 @@ aside {
   margin-top: 10px;
 }
 
+.change-game-btn:hover,
 .classic-game-btn:hover,
 .difficult-game-btn:hover {
   color: rgb(168, 31, 168);
@@ -148,6 +149,14 @@ button:hover {
 .display-human-selection,
 .display-computer-selection {
   height: 70%;
+}
+
+.change-game-btn {
+  height: 33px;
+  width: 150px;
+  border: none;
+  background-color: rgb(168, 31, 168, .3);
+  color: #FFF;
 }
 
 .hidden {

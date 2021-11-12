@@ -14,6 +14,7 @@ var lizardSelectionButton = document.getElementById('lizardSelectionBtn');
 var rockSelectionButton = document.getElementById('rockSelection');
 var paperSelectionButton = document.getElementById('paperSelection');
 var scissorsSelectionButton = document.getElementById('scissorsSelection');
+var changeGameButton = document.getElementById('changeGameBtn');
 
 // Event Listeners
 classicGameButton.addEventListener('click', displayClassicGame);
@@ -23,11 +24,14 @@ paperSelectionButton.addEventListener('click', checkPaperSelection);
 scissorsSelectionButton.addEventListener('click', checkScissorsSelection);
 lizardSelectionButton.addEventListener('click', checkLizardSelection);
 alienSelectionButton.addEventListener('click', checkAlienSelection);
+changeGameButton.addEventListener('click', displayGameSelection);
 
 
 // Global Variables
 
 var currentGame = new Game();
+var idClassicTimeout;
+var idDifficultTimeout;
 
 function displayElement(element) {
   element.classList.remove('hidden');
@@ -92,7 +96,6 @@ function resetGame() {
   lizardSelectionButton.classList.remove('selected');
   alienSelectionButton.classList.remove('selected');
   changeToFighterSelectionView();
-  
 }
 
 function displayWinnerText() {
@@ -146,18 +149,38 @@ function displayWinnerContainer() {
 
 function changeToFighterSelectionView() {
   if (classicGameButton.classList.contains('selected')) {
-    setTimeout(hideClassicWinnerDisplayContainer, 2500);
+    idClassicTimeout = setTimeout(hideClassicWinnerDisplayContainer, 2500);
   } else if (difficultGameButton.classList.contains('selected')) {
-    setTimeout(hideDifficultWinnerDisplayContainer, 2500);
+    idDifficultTimeout = setTimeout(hideDifficultWinnerDisplayContainer, 2500);
   }
+  return idClassicTimeout, idDifficultTimeout;
 }
 
 function hideClassicWinnerDisplayContainer() {
   displayClassicGame();
   winnerDisplayContainer.classList.add('hidden');
+  changeGameButton.classList.remove('hidden');
 }
 
 function hideDifficultWinnerDisplayContainer() {
   displayDifficultGame();
   winnerDisplayContainer.classList.add('hidden');
+  changeGameButton.classList.remove('hidden');
+}
+
+function displayGameSelection() {
+  if (classicGameButton.classList.contains('selected')) {
+    classicGameButton.classList.remove('selected');
+  }
+  if (difficultGameButton.classList.contains('selected')) {
+    difficultGameButton.classList.remove('selected');
+  }
+  clearTimeout(idClassicTimeout);
+  clearTimeout(idDifficultTimeout);
+  displayElement(gameSelectionContainer);
+  hideElement(fighterSelectionContainer);
+  hideElement(lizardSelectionButton);
+  hideElement(alienSelectionButton);
+  hideElement(changeGameButton);
+  hideElement(winnerDisplayContainer);
 }
