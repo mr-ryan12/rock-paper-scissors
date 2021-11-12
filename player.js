@@ -6,12 +6,17 @@ class Player {
   }
 
   saveWinsToStorage() {
-
+    if (this.name === 'Player 1') {
+      localStorage.setItem('playerOneWins', JSON.stringify(this.wins));
+    }
+    if (this.name === 'Player 2') {
+      localStorage.setItem('playerTwoWins', JSON.stringify(this.wins));
+    }
   }
 
   retrieveWinsFromStorage() {
 
-  }
+  } 
 
   assignHumanPlayerSelection() {
     if (rockSelectionButton.classList.contains('selected')) {
