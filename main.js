@@ -5,6 +5,9 @@ var chooseYourGameText = document.getElementById('chooseYourGame');
 var humanSelectionImage = document.getElementById('displayHumanSelection');
 var computerSelectionImage = document.getElementById('displayComputerSelection');
 var winnerDisplayContainer = document.getElementById('winnerDisplayContainer');
+var humanWins = document.getElementById('humanWins');
+var computerWins = document.getElementById('computerWins');
+
 
 // Variables targeting button elements
 var classicGameButton = document.getElementById('classicGameBtn');
@@ -85,6 +88,7 @@ function checkAlienSelection() {
 function gamePlay() {
   currentGame.gamePlay();
   displayWinnerContainer();
+  displayWins();
   resetGame();
 }
 
@@ -183,4 +187,9 @@ function displayGameSelection() {
   hideElement(alienSelectionButton);
   hideElement(changeGameButton);
   hideElement(winnerDisplayContainer);
+}
+
+function displayWins() {
+  humanWins.innerText = `${currentGame.player1.wins}`;
+  computerWins.innerText = `${currentGame.player2.wins}`;
 }
