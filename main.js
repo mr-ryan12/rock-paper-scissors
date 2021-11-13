@@ -10,6 +10,8 @@ var computerWins = document.getElementById('computerWins');
 var displayTokenOnRock = document.getElementById('displayTokenOnRock');
 var displayTokenOnPaper = document.getElementById('displayTokenOnPaper');
 var displayTokenOnScissors = document.getElementById('displayTokenOnScissors');
+var displayTokenOnLizard = document.getElementById('displayTokenOnLizard');
+var displayTokenOnAlien = document.getElementById('displayTokenOnAlien');
 
 
 // Variables targeting button elements
@@ -26,11 +28,11 @@ var changeGameButton = document.getElementById('changeGameBtn');
 window.addEventListener('load', displayWins);
 classicGameButton.addEventListener('click', displayClassicGame);
 difficultGameButton.addEventListener('click', displayDifficultGame);
-rockSelectionButton.addEventListener('click', displayTokenOnRockClick);
-paperSelectionButton.addEventListener('click', displayTokenOnPaperClick);
-scissorsSelectionButton.addEventListener('click', displayTokenOnScissorClick);
-lizardSelectionButton.addEventListener('click', checkLizardSelection);
-alienSelectionButton.addEventListener('click', checkAlienSelection);
+rockSelectionButton.addEventListener('click', displayOnRockClick);
+paperSelectionButton.addEventListener('click', displayOnPaperClick);
+scissorsSelectionButton.addEventListener('click', displayOnScissorClick);
+lizardSelectionButton.addEventListener('click', displayOnLizardClick);
+alienSelectionButton.addEventListener('click', displayOnAlienClick);
 changeGameButton.addEventListener('click', displayGameSelection);
 
 var currentGame = new Game();
@@ -95,14 +97,8 @@ function gamePlay() {
   resetGame();
 }
 
-// Possibly place into 'game.resetPlayers()' method 
 function resetGame() {
-  currentGame.resetPlayers();
-  rockSelectionButton.classList.remove('selected');
-  paperSelectionButton.classList.remove('selected');
-  scissorsSelectionButton.classList.remove('selected');
-  lizardSelectionButton.classList.remove('selected');
-  alienSelectionButton.classList.remove('selected');
+  currentGame.reset();
   changeToFighterSelectionView();
 }
 
@@ -168,25 +164,17 @@ function changeToFighterSelectionView() {
 }
 
 function hideClassicWinnerDisplayContainer() {
-  hideElement(displayTokenOnRock);
-  hideElement(displayTokenOnPaper);
-  hideElement(displayTokenOnScissors);
-
+  hideTokens();
   hideElement(winnerDisplayContainer);
   displayElement(changeGameButton);
   displayClassicGame();
-
 }
 
 function hideDifficultWinnerDisplayContainer() {
-  hideElement(displayTokenOnRock);
-  hideElement(displayTokenOnPaper);
-  hideElement(displayTokenOnScissor);
-  displayDifficultGame();
-
-  // Same here
-  winnerDisplayContainer.classList.add('hidden');
+  hideTokens();
+  hideElement(winnerDisplayContainer);
   displayElement(changeGameButton);
+  displayDifficultGame();
 }
 
 function displayGameSelection() {
@@ -213,17 +201,35 @@ function displayWins() {
   computerWins.innerText = `${currentGame.player2.retrieveWinsFromStorage().playerTwo}`;
 }
 
-function displayTokenOnRockClick() {
+function displayOnRockClick() {
   displayElement(displayTokenOnRock);
-  setTimeout(checkRockSelection, 500);
+  setTimeout(checkRockSelection, 110);
 }
 
-function displayTokenOnPaperClick() {
+function displayOnPaperClick() {
   displayElement(displayTokenOnPaper);
-  setTimeout(checkPaperSelection, 500);
+  setTimeout(checkPaperSelection, 110);
 }
 
-function displayTokenOnScissorClick() {
+function displayOnScissorClick() {
   displayElement(displayTokenOnScissors);
-  setTimeout(checkPaperSelection, 500);
+  setTimeout(checkScissorsSelection, 110);
+}
+
+function displayOnLizardClick() {
+  displayElement(displayTokenOnLizard);
+  setTimeout(checkLizardSelection, 110);
+}
+
+function displayOnAlienClick() {
+  displayElement(displayTokenOnAlien);
+  setTimeout(checkAlienSelection, 110);
+}
+
+function hideTokens() {
+  hideElement(displayTokenOnRock);
+  hideElement(displayTokenOnPaper);
+  hideElement(displayTokenOnScissors);
+  hideElement(displayTokenOnLizard);
+  hideElement(displayTokenOnAlien);
 }

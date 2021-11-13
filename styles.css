@@ -107,6 +107,11 @@ button:hover {
   height: 30%;
 }
 
+.difficult-fighter-selection-container {
+  display: flex;
+  justify-content: center;
+}
+
 .rock-selection,
 .paper-selection,
 .scissors-selection,
@@ -115,8 +120,9 @@ button:hover {
   background: none;
   border: none;
   background-size: 100%;
-  height: 100px;
-  width: 100px;
+  height: 184px;
+  width: 182px;
+  background-repeat: no-repeat;
 }
 
 .rock-selection {
@@ -161,8 +167,11 @@ button:hover {
 
 .display-token-on-rock,
 .display-token-on-paper,
-.display-token-on-scissors {
-  margin-top: 85px;
+.display-token-on-scissors,
+.display-token-on-lizard,
+.display-token-on-alien {
+  margin-top: 152px;
+  font-size: 33px;
 }
 
 .hidden {

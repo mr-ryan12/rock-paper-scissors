@@ -154,8 +154,13 @@ class Game {
     }
   }
 
-  resetPlayers() {
+  reset() {
     this.player1.humanSelection = '';
     this.player2.computerSelection = '';
+    rockSelectionButton.classList.remove('selected');
+    paperSelectionButton.classList.remove('selected');
+    scissorsSelectionButton.classList.remove('selected');
+    lizardSelectionButton.classList.remove('selected');
+    alienSelectionButton.classList.remove('selected');
   }
 }
