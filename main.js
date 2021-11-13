@@ -35,7 +35,6 @@ alienSelectionButton.addEventListener('click', displayOnAlienClick);
 changeGameButton.addEventListener('click', displayGameSelection);
 
 var currentGame = new Game();
-// Ask if these are okay - assigned on line 157. Maybe place all setTimeout/clearTimeout logic in game.js
 var idClassicTimeout;
 var idDifficultTimeout;
 
@@ -64,8 +63,6 @@ function displayDifficultGame() {
   displayElements([fighterSelectionContainer, lizardSelectionButton, alienSelectionButton]);
   chooseYourGameText.innerText = 'Choose your fighter!';
 }
-
-//Possibly place button elements in an array and iterate over them adding an eventListener
 
 function checkSelection(selection) {
   selection.classList.add('selected');
@@ -130,7 +127,6 @@ function displayWinnerContainer() {
   displayComputerFighter();
 }
 
-// Possibly place all setTimeout/clearTimeout logic in game.js
 function changeToFighterSelectionView() {
   if (classicGameButton.classList.contains('selected')) {
     idClassicTimeout = setTimeout(hideClassicWinnerDisplayContainer, 2000);
@@ -165,12 +161,11 @@ function displayGameSelection() {
     difficultGameButton.classList.remove('selected');
   }
 
-  // Possibly place the below (or above) in another function and invoke inside of this one
   clearTimeout(idClassicTimeout);
   clearTimeout(idDifficultTimeout);
   displayElements([gameSelectionContainer]);
-  hideElements([fighterSelectionContainer, lizardSelectionButton, alienSelectionButton, changeGameButton, winnerDisplayContainer]);
-  hideElements([displayTokenOnRock, displayTokenOnPaper, displayTokenOnScissors, displayTokenOnLizard, displayTokenOnAlien]);
+  hideElements([fighterSelectionContainer, lizardSelectionButton, alienSelectionButton, changeGameButton, winnerDisplayContainer,
+                displayTokenOnRock, displayTokenOnPaper, displayTokenOnScissors, displayTokenOnLizard, displayTokenOnAlien]);
 }
 
 function displayWins() {
