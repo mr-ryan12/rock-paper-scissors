@@ -170,6 +170,10 @@ button:hover {
   height: 70%;
 }
 
+.display-human-selection {
+  margin-right: 25px;
+}
+
 .change-game-btn {
   height: 33px;
   width: 150px;

@@ -1,28 +1,27 @@
 // Query Selectors
-var gameSelectionContainer = document.getElementById('gameSelectionContainer');
-var fighterSelectionContainer = document.getElementById('fighterSelectionContainer');
-var chooseYourGameText = document.getElementById('chooseYourGame');
-var humanSelectionImage = document.getElementById('displayHumanSelection');
-var computerSelectionImage = document.getElementById('displayComputerSelection');
-var winnerDisplayContainer = document.getElementById('winnerDisplayContainer');
 var humanWins = document.getElementById('humanWins');
 var computerWins = document.getElementById('computerWins');
+var chooseYourGameText = document.getElementById('chooseYourGame');
 var displayTokenOnRock = document.getElementById('displayTokenOnRock');
 var displayTokenOnPaper = document.getElementById('displayTokenOnPaper');
-var displayTokenOnScissors = document.getElementById('displayTokenOnScissors');
-var displayTokenOnLizard = document.getElementById('displayTokenOnLizard');
 var displayTokenOnAlien = document.getElementById('displayTokenOnAlien');
-
+var humanSelectionImage = document.getElementById('displayHumanSelection');
+var displayTokenOnLizard = document.getElementById('displayTokenOnLizard');
+var winnerDisplayContainer = document.getElementById('winnerDisplayContainer');
+var displayTokenOnScissors = document.getElementById('displayTokenOnScissors');
+var gameSelectionContainer = document.getElementById('gameSelectionContainer');
+var computerSelectionImage = document.getElementById('displayComputerSelection');
+var fighterSelectionContainer = document.getElementById('fighterSelectionContainer');
 
 // Variables targeting button elements
+var changeGameButton = document.getElementById('changeGameBtn');
 var classicGameButton = document.getElementById('classicGameBtn');
+var rockSelectionButton = document.getElementById('rockSelection');
+var paperSelectionButton = document.getElementById('paperSelection');
 var difficultGameButton = document.getElementById('difficultGameBtn');
 var alienSelectionButton = document.getElementById('alienSelectionBtn');
 var lizardSelectionButton = document.getElementById('lizardSelectionBtn');
-var rockSelectionButton = document.getElementById('rockSelection');
-var paperSelectionButton = document.getElementById('paperSelection');
 var scissorsSelectionButton = document.getElementById('scissorsSelection');
-var changeGameButton = document.getElementById('changeGameBtn');
 
 // Event Listeners
 window.addEventListener('load', displayWins);
@@ -155,9 +154,9 @@ function displayWinnerContainer() {
 // Possibly place all setTimeout/clearTimeout logic in game.js
 function changeToFighterSelectionView() {
   if (classicGameButton.classList.contains('selected')) {
-    idClassicTimeout = setTimeout(hideClassicWinnerDisplayContainer, 2500);
+    idClassicTimeout = setTimeout(hideClassicWinnerDisplayContainer, 2000);
   } else if (difficultGameButton.classList.contains('selected')) {
-    idDifficultTimeout = setTimeout(hideDifficultWinnerDisplayContainer, 2500);
+    idDifficultTimeout = setTimeout(hideDifficultWinnerDisplayContainer, 2000);
   }
 
   return idClassicTimeout, idDifficultTimeout;
@@ -178,6 +177,8 @@ function hideDifficultWinnerDisplayContainer() {
 }
 
 function displayGameSelection() {
+  chooseYourGameText.innerText = 'Choose your game!';
+
   if (classicGameButton.classList.contains('selected')) {
     classicGameButton.classList.remove('selected');
   }
