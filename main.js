@@ -66,28 +66,9 @@ function displayDifficultGame() {
 }
 
 //Possibly place button elements in an array and iterate over them adding an eventListener
-function checkRockSelection() {
-  rockSelectionButton.classList.add('selected');
-  gamePlay();
-}
 
-function checkPaperSelection() {
-  paperSelectionButton.classList.add('selected');
-  gamePlay();
-}
-
-function checkScissorsSelection() {
-  scissorsSelectionButton.classList.add('selected');
-  gamePlay();
-}
-
-function checkLizardSelection() {
-  lizardSelectionButton.classList.add('selected');
-  gamePlay();
-}
-
-function checkAlienSelection() {
-  alienSelectionButton.classList.add('selected');
+function checkSelection(selection) {
+  selection.classList.add('selected');
   gamePlay();
 }
 
@@ -199,25 +180,25 @@ function displayWins() {
 
 function displayOnRockClick() {
   displayElements([displayTokenOnRock]);
-  setTimeout(checkRockSelection, 110);
+  setTimeout(function() {checkSelection(rockSelectionButton)}, 110);
 }
 
 function displayOnPaperClick() {
   displayElements([displayTokenOnPaper]);
-  setTimeout(checkPaperSelection, 110);
+  setTimeout(function() {checkSelection(paperSelectionButton)}, 110);
 }
 
 function displayOnScissorClick() {
   displayElements([displayTokenOnScissors]);
-  setTimeout(checkScissorsSelection, 110);
+  setTimeout(function() {checkSelection(scissorsSelectionButton)}, 110);
 }
 
 function displayOnLizardClick() {
   displayElements([displayTokenOnLizard]);
-  setTimeout(checkLizardSelection, 110);
+  setTimeout(function() {checkSelection(lizardSelectionButton)}, 110);
 }
 
 function displayOnAlienClick() {
   displayElements([displayTokenOnAlien]);
-  setTimeout(checkAlienSelection, 110);
+  setTimeout(function() {checkSelection(alienSelectionButton)}, 110);
 }
