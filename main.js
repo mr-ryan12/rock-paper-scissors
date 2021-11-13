@@ -39,27 +39,29 @@ var currentGame = new Game();
 var idClassicTimeout;
 var idDifficultTimeout;
 
-function displayElement(element) {
-  element.classList.remove('hidden');
+function displayElements(elements) {
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].classList.remove('hidden');
+  }
 }
 
-function hideElement(element) {
-  element.classList.add('hidden');
+function hideElements(elements) {
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].classList.add('hidden');
+  }
 }
 
 function displayClassicGame() {
   classicGameButton.classList.add('selected');
-  hideElement(gameSelectionContainer);
-  displayElement(fighterSelectionContainer);
+  hideElements([gameSelectionContainer]);
+  displayElements([fighterSelectionContainer]);
   chooseYourGameText.innerText = 'Choose your fighter!';
 }
 
 function displayDifficultGame() {
   difficultGameButton.classList.add('selected');
-  hideElement(gameSelectionContainer);
-  displayElement(fighterSelectionContainer);
-  displayElement(lizardSelectionButton);
-  displayElement(alienSelectionButton);
+  hideElements([gameSelectionContainer]);
+  displayElements([fighterSelectionContainer, lizardSelectionButton, alienSelectionButton]);
   chooseYourGameText.innerText = 'Choose your fighter!';
 }
 
@@ -140,16 +142,12 @@ function displayComputerFighter() {
 }
 
 function displayWinnerContainer() {
-  hideElement(gameSelectionContainer);
-  hideElement(fighterSelectionContainer);
-  hideElement(lizardSelectionButton);
-  hideElement(alienSelectionButton);
-  displayElement(winnerDisplayContainer);
+  hideElements([gameSelectionContainer, fighterSelectionContainer, lizardSelectionButton, alienSelectionButton]);
+  displayElements([winnerDisplayContainer]);
   displayWinnerText();
   displayHumanFighter();
   displayComputerFighter();
 }
-
 
 // Possibly place all setTimeout/clearTimeout logic in game.js
 function changeToFighterSelectionView() {
@@ -163,17 +161,17 @@ function changeToFighterSelectionView() {
 }
 
 function hideClassicWinnerDisplayContainer() {
-  hideTokens();
-  hideElement(winnerDisplayContainer);
-  displayElement(changeGameButton);
+  hideElements([displayTokenOnRock, displayTokenOnPaper, displayTokenOnScissors, displayTokenOnLizard, displayTokenOnAlien]);
+  hideElements([winnerDisplayContainer]);
+  displayElements([changeGameButton]);
   displayClassicGame();
 }
 
 function hideDifficultWinnerDisplayContainer() {
-  hideTokens();
-  hideElement(winnerDisplayContainer);
-  displayElement(changeGameButton);
+  displayElements([changeGameButton]);
   displayDifficultGame();
+  hideElements([displayTokenOnRock, displayTokenOnPaper, displayTokenOnScissors,
+                displayTokenOnLizard, displayTokenOnAlien, winnerDisplayContainer]);
 }
 
 function displayGameSelection() {
@@ -189,13 +187,9 @@ function displayGameSelection() {
   // Possibly place the below (or above) in another function and invoke inside of this one
   clearTimeout(idClassicTimeout);
   clearTimeout(idDifficultTimeout);
-  displayElement(gameSelectionContainer);
-  hideElement(fighterSelectionContainer);
-  hideElement(lizardSelectionButton);
-  hideElement(alienSelectionButton);
-  hideElement(changeGameButton);
-  hideElement(winnerDisplayContainer);
-  hideTokens();
+  displayElements([gameSelectionContainer]);
+  hideElements([fighterSelectionContainer, lizardSelectionButton, alienSelectionButton, changeGameButton, winnerDisplayContainer]);
+  hideElements([displayTokenOnRock, displayTokenOnPaper, displayTokenOnScissors, displayTokenOnLizard, displayTokenOnAlien]);
 }
 
 function displayWins() {
@@ -204,34 +198,26 @@ function displayWins() {
 }
 
 function displayOnRockClick() {
-  displayElement(displayTokenOnRock);
+  displayElements([displayTokenOnRock]);
   setTimeout(checkRockSelection, 110);
 }
 
 function displayOnPaperClick() {
-  displayElement(displayTokenOnPaper);
+  displayElements([displayTokenOnPaper]);
   setTimeout(checkPaperSelection, 110);
 }
 
 function displayOnScissorClick() {
-  displayElement(displayTokenOnScissors);
+  displayElements([displayTokenOnScissors]);
   setTimeout(checkScissorsSelection, 110);
 }
 
 function displayOnLizardClick() {
-  displayElement(displayTokenOnLizard);
+  displayElements([displayTokenOnLizard]);
   setTimeout(checkLizardSelection, 110);
 }
 
 function displayOnAlienClick() {
-  displayElement(displayTokenOnAlien);
+  displayElements([displayTokenOnAlien]);
   setTimeout(checkAlienSelection, 110);
-}
-
-function hideTokens() {
-  hideElement(displayTokenOnRock);
-  hideElement(displayTokenOnPaper);
-  hideElement(displayTokenOnScissors);
-  hideElement(displayTokenOnLizard);
-  hideElement(displayTokenOnAlien);
 }
