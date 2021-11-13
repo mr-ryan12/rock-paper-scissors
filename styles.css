@@ -159,6 +159,12 @@ button:hover {
   color: #FFF;
 }
 
+.display-token-on-rock,
+.display-token-on-paper,
+.display-token-on-scissors {
+  margin-top: 85px;
+}
+
 .hidden {
   display: none;
 }

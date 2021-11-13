@@ -49,7 +49,7 @@ class Player {
     }
   }
 
-  assignComputerPlayerSelection() {
+  takeTurn() {
     var selections = ['rock', 'paper', 'scissors'];
     var getRandomIndex;
 
@@ -60,9 +60,5 @@ class Player {
     getRandomIndex = Math.floor(Math.random() * selections.length);
 
     return this.computerSelection = selections[getRandomIndex];
-  }
-
-  takeTurn() {
-
   }
 }

@@ -9,7 +9,7 @@ class Game {
 
   gamePlay() {
     var humanSelection = this.player1.assignHumanPlayerSelection();
-    var computerSelection = this.player2.assignComputerPlayerSelection();
+    var computerSelection = this.player2.takeTurn();
 
     if (humanSelection === 'rock' && computerSelection === 'rock') {
       this.humanWon = false;
