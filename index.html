@@ -23,13 +23,13 @@
         <h3 class="choose-your-game" id="chooseYourGame">Choose your game!</h3>
         <div class="game-selection-container" id="gameSelectionContainer">
           <button class="classic-game-btn" id="classicGameBtn">
-            <h3>🪨CLASSIC✂️</h3>
+            <h3 class="classic-header">🪨 CLASSIC ✂️</h3>
             <p class="game-text">rock > scissors</p>
             <p class="game-text">paper > rock</p>
             <p class="game-text">scissors > paper</p>
           </button>
           <button class="difficult-game-btn" id="difficultGameBtn">
-            <h3 class="difficult">👽DIFFICULT👽</h3>
+            <h3 class="difficult-header">👽 DIFFICULT 👽</h3>
             <p class="game-text">rock > scissors & lizard</p>
             <p class="game-text">paper > rock & alien</p>
             <p class="game-text">scissors > paper & lizard</p>
@@ -38,15 +38,17 @@
           </button>
         </div>
         <div class="fighter-selection-container hidden" id="fighterSelectionContainer">
-          <button class="rock-selection" id="rockSelection"></button>
-          <button class="paper-selection" id="paperSelection"></button>
-          <button class="scissors-selection" id="scissorsSelection"></button>
+          <button class="rock-selection" id="rockSelection"><p class="display-token-on-rock hidden" id="displayTokenOnRock">👦</p></button>
+          <button class="paper-selection" id="paperSelection"><p class="display-token-on-paper hidden" id="displayTokenOnPaper">👦</p></button>
+          <button class="scissors-selection" id="scissorsSelection"><p class="display-token-on-scissors hidden" id="displayTokenOnScissors">👦</p></button>
         </div>
-        <button class="lizard-selection hidden" id="lizardSelectionBtn"></button>
-        <button class="alien-selection hidden" id="alienSelectionBtn"></button>
+        <div class="difficult-fighter-selection-container" id="difficultFighterSelectionContainer">
+          <button class="lizard-selection hidden" id="lizardSelectionBtn"><p class="display-token-on-lizard hidden" id="displayTokenOnLizard">👦</p></button>
+          <button class="alien-selection hidden" id="alienSelectionBtn"><p class="display-token-on-alien hidden" id="displayTokenOnAlien">👦</p></button>
+        </div>
         <div class="winner-display-container hidden" id="winnerDisplayContainer">
-          <img src="./assets/happy-rocks.png" class="display-human-selection" id="displayHumanSelection">
-          <img src="./assets/happy-paper.png" class="display-computer-selection" id="displayComputerSelection">
+          <img src="./assets/happy-rocks.png" class="display-human-selection" id="displayHumanSelection" alt="Happy Rocks">
+          <img src="./assets/happy-paper.png" class="display-computer-selection" id="displayComputerSelection" alt="Happy Paper">
         </div>
       </div>
       <div class="right-container">

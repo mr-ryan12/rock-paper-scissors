@@ -7,6 +7,11 @@ var computerSelectionImage = document.getElementById('displayComputerSelection')
 var winnerDisplayContainer = document.getElementById('winnerDisplayContainer');
 var humanWins = document.getElementById('humanWins');
 var computerWins = document.getElementById('computerWins');
+var displayTokenOnRock = document.getElementById('displayTokenOnRock');
+var displayTokenOnPaper = document.getElementById('displayTokenOnPaper');
+var displayTokenOnScissors = document.getElementById('displayTokenOnScissors');
+var displayTokenOnLizard = document.getElementById('displayTokenOnLizard');
+var displayTokenOnAlien = document.getElementById('displayTokenOnAlien');
 
 
 // Variables targeting button elements
@@ -23,17 +28,15 @@ var changeGameButton = document.getElementById('changeGameBtn');
 window.addEventListener('load', displayWins);
 classicGameButton.addEventListener('click', displayClassicGame);
 difficultGameButton.addEventListener('click', displayDifficultGame);
-rockSelectionButton.addEventListener('click', checkRockSelection);
-paperSelectionButton.addEventListener('click', checkPaperSelection);
-scissorsSelectionButton.addEventListener('click', checkScissorsSelection);
-lizardSelectionButton.addEventListener('click', checkLizardSelection);
-alienSelectionButton.addEventListener('click', checkAlienSelection);
+rockSelectionButton.addEventListener('click', displayOnRockClick);
+paperSelectionButton.addEventListener('click', displayOnPaperClick);
+scissorsSelectionButton.addEventListener('click', displayOnScissorClick);
+lizardSelectionButton.addEventListener('click', displayOnLizardClick);
+alienSelectionButton.addEventListener('click', displayOnAlienClick);
 changeGameButton.addEventListener('click', displayGameSelection);
 
-
-// Global Variables
-
 var currentGame = new Game();
+// Ask if these are okay - assigned on line 157. Maybe place all setTimeout/clearTimeout logic in game.js
 var idClassicTimeout;
 var idDifficultTimeout;
 
@@ -61,6 +64,7 @@ function displayDifficultGame() {
   chooseYourGameText.innerText = 'Choose your fighter!';
 }
 
+//Possibly place button elements in an array and iterate over them adding an eventListener
 function checkRockSelection() {
   rockSelectionButton.classList.add('selected');
   gamePlay();
@@ -94,12 +98,7 @@ function gamePlay() {
 }
 
 function resetGame() {
-  currentGame.resetPlayers();
-  rockSelectionButton.classList.remove('selected');
-  paperSelectionButton.classList.remove('selected');
-  scissorsSelectionButton.classList.remove('selected');
-  lizardSelectionButton.classList.remove('selected');
-  alienSelectionButton.classList.remove('selected');
+  currentGame.reset();
   changeToFighterSelectionView();
 }
 
@@ -152,25 +151,30 @@ function displayWinnerContainer() {
   displayComputerFighter();
 }
 
+
+// Possibly place all setTimeout/clearTimeout logic in game.js
 function changeToFighterSelectionView() {
   if (classicGameButton.classList.contains('selected')) {
     idClassicTimeout = setTimeout(hideClassicWinnerDisplayContainer, 2500);
   } else if (difficultGameButton.classList.contains('selected')) {
     idDifficultTimeout = setTimeout(hideDifficultWinnerDisplayContainer, 2500);
   }
+
   return idClassicTimeout, idDifficultTimeout;
 }
 
 function hideClassicWinnerDisplayContainer() {
+  hideTokens();
+  hideElement(winnerDisplayContainer);
+  displayElement(changeGameButton);
   displayClassicGame();
-  winnerDisplayContainer.classList.add('hidden');
-  changeGameButton.classList.remove('hidden');
 }
 
 function hideDifficultWinnerDisplayContainer() {
+  hideTokens();
+  hideElement(winnerDisplayContainer);
+  displayElement(changeGameButton);
   displayDifficultGame();
-  winnerDisplayContainer.classList.add('hidden');
-  changeGameButton.classList.remove('hidden');
 }
 
 function displayGameSelection() {
@@ -180,6 +184,8 @@ function displayGameSelection() {
   if (difficultGameButton.classList.contains('selected')) {
     difficultGameButton.classList.remove('selected');
   }
+
+  // Possibly place the below (or above) in another function and invoke inside of this one
   clearTimeout(idClassicTimeout);
   clearTimeout(idDifficultTimeout);
   displayElement(gameSelectionContainer);
@@ -193,4 +199,37 @@ function displayGameSelection() {
 function displayWins() {
   humanWins.innerText = `${currentGame.player1.retrieveWinsFromStorage().playerOne}`;
   computerWins.innerText = `${currentGame.player2.retrieveWinsFromStorage().playerTwo}`;
+}
+
+function displayOnRockClick() {
+  displayElement(displayTokenOnRock);
+  setTimeout(checkRockSelection, 110);
+}
+
+function displayOnPaperClick() {
+  displayElement(displayTokenOnPaper);
+  setTimeout(checkPaperSelection, 110);
+}
+
+function displayOnScissorClick() {
+  displayElement(displayTokenOnScissors);
+  setTimeout(checkScissorsSelection, 110);
+}
+
+function displayOnLizardClick() {
+  displayElement(displayTokenOnLizard);
+  setTimeout(checkLizardSelection, 110);
+}
+
+function displayOnAlienClick() {
+  displayElement(displayTokenOnAlien);
+  setTimeout(checkAlienSelection, 110);
+}
+
+function hideTokens() {
+  hideElement(displayTokenOnRock);
+  hideElement(displayTokenOnPaper);
+  hideElement(displayTokenOnScissors);
+  hideElement(displayTokenOnLizard);
+  hideElement(displayTokenOnAlien);
 }

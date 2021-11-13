@@ -9,7 +9,7 @@ class Game {
 
   gamePlay() {
     var humanSelection = this.player1.assignHumanPlayerSelection();
-    var computerSelection = this.player2.assignComputerPlayerSelection();
+    var computerSelection = this.player2.takeTurn();
 
     if (humanSelection === 'rock' && computerSelection === 'rock') {
       this.humanWon = false;
@@ -154,8 +154,13 @@ class Game {
     }
   }
 
-  resetPlayers() {
+  reset() {
     this.player1.humanSelection = '';
     this.player2.computerSelection = '';
+    rockSelectionButton.classList.remove('selected');
+    paperSelectionButton.classList.remove('selected');
+    scissorsSelectionButton.classList.remove('selected');
+    lizardSelectionButton.classList.remove('selected');
+    alienSelectionButton.classList.remove('selected');
   }
 }
