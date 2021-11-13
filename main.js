@@ -194,6 +194,7 @@ function displayGameSelection() {
   hideElement(alienSelectionButton);
   hideElement(changeGameButton);
   hideElement(winnerDisplayContainer);
+  hideTokens();
 }
 
 function displayWins() {
