@@ -5,6 +5,7 @@ class Game {
     this.humanWon = false;
     this.computerWon = false;
     this.draw = false;
+    this.timeout;
   }
 
   gamePlay() {
@@ -162,5 +163,17 @@ class Game {
     scissorsSelectionButton.classList.remove('selected');
     lizardSelectionButton.classList.remove('selected');
     alienSelectionButton.classList.remove('selected');
+  }
+
+  winnerTimeout() {
+    if (classicGameButton.classList.contains('selected')) {
+      return this.timeout = setTimeout(hideClassicWinnerDisplayContainer, 2000);
+    } else if (difficultGameButton.classList.contains('selected')) {
+      return this.timeout = setTimeout(hideDifficultWinnerDisplayContainer, 2000);
+    }
+  }
+
+  clearWinnerTimeout() {
+    clearTimeout(this.timeout);
   }
 }

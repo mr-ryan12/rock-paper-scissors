@@ -35,8 +35,6 @@ alienSelectionButton.addEventListener('click', displayOnAlienClick);
 changeGameButton.addEventListener('click', displayGameSelection);
 
 var currentGame = new Game();
-var idClassicTimeout;
-var idDifficultTimeout;
 
 function displayElements(elements) {
   for (var i = 0; i < elements.length; i++) {
@@ -78,7 +76,7 @@ function gamePlay() {
 
 function resetGame() {
   currentGame.reset();
-  changeToFighterSelectionView();
+  currentGame.winnerTimeout();
 }
 
 function displayWinnerText() {
@@ -127,16 +125,6 @@ function displayWinnerContainer() {
   displayComputerFighter();
 }
 
-function changeToFighterSelectionView() {
-  if (classicGameButton.classList.contains('selected')) {
-    idClassicTimeout = setTimeout(hideClassicWinnerDisplayContainer, 2000);
-  } else if (difficultGameButton.classList.contains('selected')) {
-    idDifficultTimeout = setTimeout(hideDifficultWinnerDisplayContainer, 2000);
-  }
-
-  return idClassicTimeout, idDifficultTimeout;
-}
-
 function hideClassicWinnerDisplayContainer() {
   hideElements([displayTokenOnRock, displayTokenOnPaper, displayTokenOnScissors, displayTokenOnLizard, displayTokenOnAlien]);
   hideElements([winnerDisplayContainer]);
@@ -152,8 +140,6 @@ function hideDifficultWinnerDisplayContainer() {
 }
 
 function displayGameSelection() {
-  chooseYourGameText.innerText = 'Choose your game!';
-
   if (classicGameButton.classList.contains('selected')) {
     classicGameButton.classList.remove('selected');
   }
@@ -161,8 +147,8 @@ function displayGameSelection() {
     difficultGameButton.classList.remove('selected');
   }
 
-  clearTimeout(idClassicTimeout);
-  clearTimeout(idDifficultTimeout);
+  chooseYourGameText.innerText = 'Choose your game!';
+  currentGame.clearWinnerTimeout();
   displayElements([gameSelectionContainer]);
   hideElements([fighterSelectionContainer, lizardSelectionButton, alienSelectionButton, changeGameButton, winnerDisplayContainer,
                 displayTokenOnRock, displayTokenOnPaper, displayTokenOnScissors, displayTokenOnLizard, displayTokenOnAlien]);
