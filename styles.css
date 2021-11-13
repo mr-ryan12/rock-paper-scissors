@@ -76,8 +76,20 @@ aside {
   background-color: rgb(168, 31, 168, .3);
   border: none;
   width: 250px;
-  height: 200px;
-  margin-top: 10px;
+  height: 180px;
+  margin-top: -15px;
+}
+
+.difficult-game-btn {
+  height: 230px;
+}
+
+.classic-header {
+  margin-top: 0px;
+}
+
+.difficult-header {
+  margin-top: 0px;
 }
 
 .change-game-btn:hover,
@@ -105,6 +117,7 @@ button:hover {
   justify-content: center;
   align-items: center;
   height: 30%;
+  margin-top: 80px;
 }
 
 .difficult-fighter-selection-container {
@@ -163,6 +176,7 @@ button:hover {
   border: none;
   background-color: rgb(168, 31, 168, .3);
   color: #FFF;
+  margin-top: 25px;
 }
 
 .display-token-on-rock,
