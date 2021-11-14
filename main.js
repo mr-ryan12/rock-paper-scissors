@@ -154,14 +154,16 @@ function hideDifficultWinnerDisplayContainer() {
                 displayTokenOnLizard, displayTokenOnAlien, winnerDisplayContainer]);
 }
 
-function displayGameSelection() {
+function removeGameSelection() {
   if (classicGameButton.classList.contains('selected')) {
     classicGameButton.classList.remove('selected');
-  }
-  if (difficultGameButton.classList.contains('selected')) {
+  } else if (difficultGameButton.classList.contains('selected')) {
     difficultGameButton.classList.remove('selected');
   }
+}
 
+function displayGameSelection() {
+  removeGameSelection();
   chooseYourGameText.innerText = 'Choose your game!';
   currentGame.clearWinnerTimeout();
   displayElements([gameSelectionContainer]);
@@ -170,8 +172,8 @@ function displayGameSelection() {
 }
 
 function displayWins() {
-  humanWins.innerText = `${currentGame.player1.retrieveWinsFromStorage().playerOne}`;
-  computerWins.innerText = `${currentGame.player2.retrieveWinsFromStorage().playerTwo}`;
+  humanWins.innerText = `Wins: ${currentGame.player1.retrieveWinsFromStorage().playerOne}`;
+  computerWins.innerText = `Wins: ${currentGame.player2.retrieveWinsFromStorage().playerTwo}`;
 }
 
 function displayOnRockClick() {

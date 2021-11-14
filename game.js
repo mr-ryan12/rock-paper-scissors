@@ -5,7 +5,6 @@ class Game {
     this.humanWon = false;
     this.computerWon = false;
     this.draw = false;
-    this.timeout;
   }
 
   gamePlay() {
