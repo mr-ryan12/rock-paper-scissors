@@ -27,12 +27,12 @@ var scissorsSelectionButton = document.getElementById('scissorsSelection');
 window.addEventListener('load', displayWins);
 classicGameButton.addEventListener('click', displayClassicGame);
 changeGameButton.addEventListener('click', displayGameSelection);
-rockSelectionButton.addEventListener('click', displayOnRockClick);
 difficultGameButton.addEventListener('click', displayDifficultGame);
-paperSelectionButton.addEventListener('click', displayOnPaperClick);
-alienSelectionButton.addEventListener('click', displayOnAlienClick);
-lizardSelectionButton.addEventListener('click', displayOnLizardClick);
-scissorsSelectionButton.addEventListener('click', displayOnScissorClick);
+rockSelectionButton.addEventListener('click', function() {displayOnClick(displayTokenOnRock, rockSelectionButton)});
+paperSelectionButton.addEventListener('click', function() {displayOnClick(displayTokenOnPaper, paperSelectionButton)});
+alienSelectionButton.addEventListener('click', function() {displayOnClick(displayTokenOnAlien, alienSelectionButton)});
+lizardSelectionButton.addEventListener('click', function() {displayOnClick(displayTokenOnLizard, lizardSelectionButton)});
+scissorsSelectionButton.addEventListener('click', function() {displayOnClick(displayTokenOnScissors, scissorsSelectionButton)});
 
 var currentGame = new Game();
 
@@ -45,6 +45,19 @@ function displayElements(elements) {
 function hideElements(elements) {
   for (var i = 0; i < elements.length; i++) {
     elements[i].classList.add('hidden');
+  }
+}
+
+function resetButtons(buttons) {
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].classList.remove('selected');
+  }
+}
+
+function displayOnClick(displayTokenOnElement, fighterSelectionButton) {
+  if (displayTokenOnElement.classList.contains('hidden')) {
+    displayElements([displayTokenOnElement]);
+    currentGame.selectionTimeout(fighterSelectionButton);
   }
 }
 
@@ -67,21 +80,13 @@ function checkSelection(selection) {
   gamePlay();
 }
 
-function resetButtons() {
-  rockSelectionButton.classList.remove('selected');
-  paperSelectionButton.classList.remove('selected');
-  scissorsSelectionButton.classList.remove('selected');
-  lizardSelectionButton.classList.remove('selected');
-  alienSelectionButton.classList.remove('selected');
-}
-
 function gamePlay() {
-  currentGame.gamePlay();
+  currentGame.winConditions();
   displayWinnerContainer();
   displayWins();
   currentGame.resetPlayers();
   currentGame.winnerTimeout();
-  resetButtons();
+  resetButtons([rockSelectionButton, paperSelectionButton, scissorsSelectionButton, lizardSelectionButton, alienSelectionButton]);
 }
 
 function displayWinnerText() {
@@ -174,39 +179,4 @@ function displayGameSelection() {
 function displayWins() {
   humanWins.innerText = `Wins: ${currentGame.player1.retrieveWinsFromStorage().playerOne}`;
   computerWins.innerText = `Wins: ${currentGame.player2.retrieveWinsFromStorage().playerTwo}`;
-}
-
-function displayOnRockClick() {
-  if (displayTokenOnRock.classList.contains('hidden')) {
-    displayElements([displayTokenOnRock]);
-    setTimeout(function() {checkSelection(rockSelectionButton)}, 500);
-  }
-}
-
-function displayOnPaperClick() {
-  if (displayTokenOnPaper.classList.contains('hidden')) {
-    displayElements([displayTokenOnPaper]);
-    setTimeout(function() {checkSelection(paperSelectionButton)}, 500);
-  }
-}
-
-function displayOnScissorClick() {
-  if (displayTokenOnScissors.classList.contains('hidden')) {
-    displayElements([displayTokenOnScissors]);
-    setTimeout(function() {checkSelection(scissorsSelectionButton)}, 500);
-  }
-}
-
-function displayOnLizardClick() {
-  if (displayTokenOnLizard.classList.contains('hidden')) {
-    displayElements([displayTokenOnLizard]);
-    setTimeout(function() {checkSelection(lizardSelectionButton)}, 500);
-  }
-}
-
-function displayOnAlienClick() {
-  if (displayTokenOnAlien.classList.contains('hidden')) {
-    displayElements([displayTokenOnAlien]);
-    setTimeout(function() {checkSelection(alienSelectionButton)}, 500);
-  }
 }

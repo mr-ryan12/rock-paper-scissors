@@ -7,7 +7,7 @@ class Game {
     this.draw = false;
   }
 
-  gamePlay() {
+  winConditions() {
     var humanSelection = this.player1.assignHumanPlayerSelection();
     var computerSelection = this.player2.takeTurn();
 
@@ -66,6 +66,10 @@ class Game {
     } else if (difficultGameButton.classList.contains('selected')) {
       return this.timeout = setTimeout(hideDifficultWinnerDisplayContainer, 2000);
     }
+  }
+
+  selectionTimeout(button) {
+    setTimeout(function() {checkSelection(button)}, 500);
   }
 
   clearWinnerTimeout() {
