@@ -36,6 +36,7 @@ changeGameButton.addEventListener('click', displayGameSelection);
 
 var currentGame = new Game();
 
+
 function displayElements(elements) {
   for (var i = 0; i < elements.length; i++) {
     elements[i].classList.remove('hidden');
@@ -71,10 +72,6 @@ function gamePlay() {
   currentGame.gamePlay();
   displayWinnerContainer();
   displayWins();
-  resetGame();
-}
-
-function resetGame() {
   currentGame.reset();
   currentGame.winnerTimeout();
 }
