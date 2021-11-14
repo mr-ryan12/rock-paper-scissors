@@ -84,10 +84,7 @@ aside {
   height: 230px;
 }
 
-.classic-header {
-  margin-top: 0px;
-}
-
+.classic-header,
 .difficult-header {
   margin-top: 0px;
 }
