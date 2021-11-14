@@ -26,16 +26,15 @@ var scissorsSelectionButton = document.getElementById('scissorsSelection');
 // Event Listeners
 window.addEventListener('load', displayWins);
 classicGameButton.addEventListener('click', displayClassicGame);
-difficultGameButton.addEventListener('click', displayDifficultGame);
-rockSelectionButton.addEventListener('click', displayOnRockClick);
-paperSelectionButton.addEventListener('click', displayOnPaperClick);
-scissorsSelectionButton.addEventListener('click', displayOnScissorClick);
-lizardSelectionButton.addEventListener('click', displayOnLizardClick);
-alienSelectionButton.addEventListener('click', displayOnAlienClick);
 changeGameButton.addEventListener('click', displayGameSelection);
+rockSelectionButton.addEventListener('click', displayOnRockClick);
+difficultGameButton.addEventListener('click', displayDifficultGame);
+paperSelectionButton.addEventListener('click', displayOnPaperClick);
+alienSelectionButton.addEventListener('click', displayOnAlienClick);
+lizardSelectionButton.addEventListener('click', displayOnLizardClick);
+scissorsSelectionButton.addEventListener('click', displayOnScissorClick);
 
 var currentGame = new Game();
-
 
 function displayElements(elements) {
   for (var i = 0; i < elements.length; i++) {
@@ -68,12 +67,21 @@ function checkSelection(selection) {
   gamePlay();
 }
 
+function resetButtons() {
+  rockSelectionButton.classList.remove('selected');
+  paperSelectionButton.classList.remove('selected');
+  scissorsSelectionButton.classList.remove('selected');
+  lizardSelectionButton.classList.remove('selected');
+  alienSelectionButton.classList.remove('selected');
+}
+
 function gamePlay() {
   currentGame.gamePlay();
   displayWinnerContainer();
   displayWins();
-  currentGame.reset();
+  currentGame.resetPlayers();
   currentGame.winnerTimeout();
+  resetButtons();
 }
 
 function displayWinnerText() {
@@ -89,28 +97,38 @@ function displayWinnerText() {
 function displayHumanFighter() {
   if (currentGame.player1.humanSelection === 'rock') {
     humanSelectionImage.src = './assets/happy-rocks.png';
+    humanSelectionImage.alt = 'Happy Rocks';
   } else if (currentGame.player1.humanSelection === 'paper') {
     humanSelectionImage.src = './assets/happy-paper.png';
+    humanSelectionImage.alt = 'Happy Paper';
   } else if (currentGame.player1.humanSelection === 'scissors') {
     humanSelectionImage.src = './assets/scissors-copy.png';
+    humanSelectionImage.alt = 'Happy Scissors';
   } else if (currentGame.player1.humanSelection === 'lizard') {
     humanSelectionImage.src = './assets/lizard.png';
+    humanSelectionImage.alt = 'Happy Lizard';
   } else if (currentGame.player1.humanSelection === 'alien') {
     humanSelectionImage.src = './assets/happy-alien.png';
+    humanSelectionImage.alt = 'Happy Alien';
   }
 }
 
 function displayComputerFighter() {
   if (currentGame.player2.computerSelection === 'rock') {
     computerSelectionImage.src = './assets/happy-rocks.png';
+    humanSelectionImage.alt = 'Happy Rocks';
   } else if (currentGame.player2.computerSelection === 'paper') {
     computerSelectionImage.src = './assets/happy-paper.png';
+    humanSelectionImage.alt = 'Happy Paper';
   } else if (currentGame.player2.computerSelection === 'scissors') {
     computerSelectionImage.src = './assets/scissors-copy.png';
+    humanSelectionImage.alt = 'Happy Scissors';
   } else if (currentGame.player2.computerSelection === 'lizard') {
     computerSelectionImage.src = './assets/lizard.png';
+    humanSelectionImage.alt = 'Happy Lizard';
   } else if (currentGame.player2.computerSelection === 'alien') {
     computerSelectionImage.src = './assets/happy-alien.png';
+    humanSelectionImage.alt = 'Happy Alien';
   }
 }
 
@@ -157,26 +175,36 @@ function displayWins() {
 }
 
 function displayOnRockClick() {
-  displayElements([displayTokenOnRock]);
-  setTimeout(function() {checkSelection(rockSelectionButton)}, 110);
+  if (displayTokenOnRock.classList.contains('hidden')) {
+    displayElements([displayTokenOnRock]);
+    setTimeout(function() {checkSelection(rockSelectionButton)}, 500);
+  }
 }
 
 function displayOnPaperClick() {
-  displayElements([displayTokenOnPaper]);
-  setTimeout(function() {checkSelection(paperSelectionButton)}, 110);
+  if (displayTokenOnPaper.classList.contains('hidden')) {
+    displayElements([displayTokenOnPaper]);
+    setTimeout(function() {checkSelection(paperSelectionButton)}, 500);
+  }
 }
 
 function displayOnScissorClick() {
-  displayElements([displayTokenOnScissors]);
-  setTimeout(function() {checkSelection(scissorsSelectionButton)}, 110);
+  if (displayTokenOnScissors.classList.contains('hidden')) {
+    displayElements([displayTokenOnScissors]);
+    setTimeout(function() {checkSelection(scissorsSelectionButton)}, 500);
+  }
 }
 
 function displayOnLizardClick() {
-  displayElements([displayTokenOnLizard]);
-  setTimeout(function() {checkSelection(lizardSelectionButton)}, 110);
+  if (displayTokenOnLizard.classList.contains('hidden')) {
+    displayElements([displayTokenOnLizard]);
+    setTimeout(function() {checkSelection(lizardSelectionButton)}, 500);
+  }
 }
 
 function displayOnAlienClick() {
-  displayElements([displayTokenOnAlien]);
-  setTimeout(function() {checkSelection(alienSelectionButton)}, 110);
+  if (displayTokenOnAlien.classList.contains('hidden')) {
+    displayElements([displayTokenOnAlien]);
+    setTimeout(function() {checkSelection(alienSelectionButton)}, 500);
+  }
 }
