@@ -28,11 +28,21 @@ window.addEventListener('load', displayWins);
 classicGameButton.addEventListener('click', displayClassicGame);
 changeGameButton.addEventListener('click', displayGameSelection);
 difficultGameButton.addEventListener('click', displayDifficultGame);
-rockSelectionButton.addEventListener('click', function() {displayOnClick(displayTokenOnRock, rockSelectionButton)});
-paperSelectionButton.addEventListener('click', function() {displayOnClick(displayTokenOnPaper, paperSelectionButton)});
-alienSelectionButton.addEventListener('click', function() {displayOnClick(displayTokenOnAlien, alienSelectionButton)});
-lizardSelectionButton.addEventListener('click', function() {displayOnClick(displayTokenOnLizard, lizardSelectionButton)});
-scissorsSelectionButton.addEventListener('click', function() {displayOnClick(displayTokenOnScissors, scissorsSelectionButton)});
+rockSelectionButton.addEventListener('click', function() {
+  displayOnClick(displayTokenOnRock, rockSelectionButton)
+});
+paperSelectionButton.addEventListener('click', function() {
+  displayOnClick(displayTokenOnPaper, paperSelectionButton)
+});
+alienSelectionButton.addEventListener('click', function() {
+  displayOnClick(displayTokenOnAlien, alienSelectionButton)
+});
+lizardSelectionButton.addEventListener('click', function() {
+  displayOnClick(displayTokenOnLizard, lizardSelectionButton)
+});
+scissorsSelectionButton.addEventListener('click', function() {
+  displayOnClick(displayTokenOnScissors, scissorsSelectionButton)
+});
 
 var currentGame = new Game();
 
@@ -71,7 +81,11 @@ function displayClassicGame() {
 function displayDifficultGame() {
   difficultGameButton.classList.add('selected');
   hideElements([gameSelectionContainer]);
-  displayElements([fighterSelectionContainer, lizardSelectionButton, alienSelectionButton]);
+  displayElements([
+    fighterSelectionContainer,
+    lizardSelectionButton,
+    alienSelectionButton
+  ]);
   chooseYourGameText.innerText = 'Choose your fighter!';
 }
 
@@ -86,10 +100,17 @@ function gamePlay() {
   displayWins();
   currentGame.resetPlayers();
   currentGame.winnerTimeout();
-  resetButtons([rockSelectionButton, paperSelectionButton, scissorsSelectionButton, lizardSelectionButton, alienSelectionButton]);
+  resetButtons([
+    rockSelectionButton,
+    paperSelectionButton,
+    scissorsSelectionButton,
+    lizardSelectionButton,
+    alienSelectionButton
+  ]);
 }
 
 function displayWinnerText() {
+  currentGame.browserSpeak();
   if (currentGame.humanWon) {
     chooseYourGameText.innerText = `${currentGame.player1.token} Human won this round! ${currentGame.player1.token}`;
   } else if (currentGame.computerWon) {
@@ -99,55 +120,49 @@ function displayWinnerText() {
   }
 }
 
-function displayHumanFighter() {
-  if (currentGame.player1.humanSelection === 'rock') {
-    humanSelectionImage.src = './assets/happy-rocks.png';
-    humanSelectionImage.alt = 'Happy Rocks';
-  } else if (currentGame.player1.humanSelection === 'paper') {
-    humanSelectionImage.src = './assets/happy-paper.png';
-    humanSelectionImage.alt = 'Happy Paper';
-  } else if (currentGame.player1.humanSelection === 'scissors') {
-    humanSelectionImage.src = './assets/scissors-copy.png';
-    humanSelectionImage.alt = 'Happy Scissors';
-  } else if (currentGame.player1.humanSelection === 'lizard') {
-    humanSelectionImage.src = './assets/lizard.png';
-    humanSelectionImage.alt = 'Happy Lizard';
-  } else if (currentGame.player1.humanSelection === 'alien') {
-    humanSelectionImage.src = './assets/happy-alien.png';
-    humanSelectionImage.alt = 'Happy Alien';
-  }
-}
+function displayFighter(player, selection, imageRef) {
+  var currentGameSelection = currentGame[player][selection];
 
-function displayComputerFighter() {
-  if (currentGame.player2.computerSelection === 'rock') {
-    computerSelectionImage.src = './assets/happy-rocks.png';
-    humanSelectionImage.alt = 'Happy Rocks';
-  } else if (currentGame.player2.computerSelection === 'paper') {
-    computerSelectionImage.src = './assets/happy-paper.png';
-    humanSelectionImage.alt = 'Happy Paper';
-  } else if (currentGame.player2.computerSelection === 'scissors') {
-    computerSelectionImage.src = './assets/scissors-copy.png';
-    humanSelectionImage.alt = 'Happy Scissors';
-  } else if (currentGame.player2.computerSelection === 'lizard') {
-    computerSelectionImage.src = './assets/lizard.png';
-    humanSelectionImage.alt = 'Happy Lizard';
-  } else if (currentGame.player2.computerSelection === 'alien') {
-    computerSelectionImage.src = './assets/happy-alien.png';
-    humanSelectionImage.alt = 'Happy Alien';
+  if (currentGameSelection === 'rock') {
+    imageRef.src = './assets/happy-rocks.png';
+    imageRef.alt = 'Happy Rocks';
+  } else if (currentGameSelection === 'paper') {
+    imageRef.src = './assets/happy-paper.png';
+    imageRef.alt = 'Happy Paper';
+  } else if (currentGameSelection === 'scissors') {
+    imageRef.src = './assets/scissors-copy.png';
+    imageRef.alt = 'Happy Scissors';
+  } else if (currentGameSelection === 'lizard') {
+    imageRef.src = './assets/lizard.png';
+    imageRef.alt = 'Happy Lizard';
+  } else if (currentGameSelection === 'alien') {
+    imageRef.src = './assets/happy-alien.png';
+    imageRef.alt = 'Happy Alien';
   }
 }
 
 function displayWinnerContainer() {
-  hideElements([gameSelectionContainer, fighterSelectionContainer, lizardSelectionButton, alienSelectionButton]);
+  hideElements([
+    gameSelectionContainer,
+    fighterSelectionContainer,
+    lizardSelectionButton,
+    alienSelectionButton
+  ]);
   displayElements([winnerDisplayContainer]);
   displayWinnerText();
-  displayHumanFighter();
-  displayComputerFighter();
+  displayFighter('player1', 'humanSelection', humanSelectionImage);
+  displayFighter('player2', 'computerSelection', computerSelectionImage);
 }
 
 function hideClassicWinnerDisplayContainer() {
-  hideElements([displayTokenOnRock, displayTokenOnPaper, displayTokenOnScissors, displayTokenOnLizard, displayTokenOnAlien]);
-  hideElements([winnerDisplayContainer]);
+  hideElements([
+    displayTokenOnRock,
+    displayTokenOnPaper,
+    displayTokenOnScissors,
+    displayTokenOnLizard,
+    displayTokenOnAlien,
+    winnerDisplayContainer
+  ]);
   displayElements([changeGameButton]);
   displayClassicGame();
 }
@@ -155,15 +170,21 @@ function hideClassicWinnerDisplayContainer() {
 function hideDifficultWinnerDisplayContainer() {
   displayElements([changeGameButton]);
   displayDifficultGame();
-  hideElements([displayTokenOnRock, displayTokenOnPaper, displayTokenOnScissors,
-                displayTokenOnLizard, displayTokenOnAlien, winnerDisplayContainer]);
+  hideElements([
+    displayTokenOnRock,
+    displayTokenOnPaper,
+    displayTokenOnScissors,
+    displayTokenOnLizard,
+    displayTokenOnAlien,
+    winnerDisplayContainer
+  ]);
 }
 
 function removeGameSelection() {
   if (classicGameButton.classList.contains('selected')) {
-    classicGameButton.classList.remove('selected');
+    return classicGameButton.classList.remove('selected');
   } else if (difficultGameButton.classList.contains('selected')) {
-    difficultGameButton.classList.remove('selected');
+    return difficultGameButton.classList.remove('selected');
   }
 }
 
@@ -172,8 +193,18 @@ function displayGameSelection() {
   removeGameSelection();
   chooseYourGameText.innerText = 'Choose your game!';
   displayElements([gameSelectionContainer]);
-  hideElements([fighterSelectionContainer, lizardSelectionButton, alienSelectionButton, changeGameButton, winnerDisplayContainer,
-                displayTokenOnRock, displayTokenOnPaper, displayTokenOnScissors, displayTokenOnLizard, displayTokenOnAlien]);
+  hideElements([
+    fighterSelectionContainer,
+    lizardSelectionButton,
+    alienSelectionButton,
+    changeGameButton,
+    winnerDisplayContainer,
+    displayTokenOnRock,
+    displayTokenOnPaper,
+    displayTokenOnScissors,
+    displayTokenOnLizard,
+    displayTokenOnAlien
+  ]);
 }
 
 function displayWins() {

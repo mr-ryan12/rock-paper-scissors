@@ -51,14 +51,15 @@ class Player {
 
   takeTurn() {
     var selections = ['rock', 'paper', 'scissors'];
-    var getRandomIndex;
 
     if (difficultGameButton.classList.contains('selected')) {
       selections.push('lizard', 'alien');
     }
 
-    getRandomIndex = Math.floor(Math.random() * selections.length);
+    return this.computerSelection = selections[this.getRandomIndex(selections)];
+  }
 
-    return this.computerSelection = selections[getRandomIndex];
+  getRandomIndex(array) {
+    return Math.floor(Math.random() * array.length);
   }
 }
