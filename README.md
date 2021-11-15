@@ -6,7 +6,7 @@
 - [Screentshots](#screenshots)
 - [Links](#links)
 - [Future Additions](#future-additions)
-- [Challenges & Wins](#challenges-&-wins)
+- [Challenges and Wins](#challenges-and-wins)
 - [Contributors](#contributors)
 - [Technologies](#technologies)
 
@@ -38,7 +38,7 @@ Checkout the Turing spec sheet [here](https://frontend.turing.edu/projects/modul
 - Add different types of fighters  
 - Add animations to the results of the game  
   
-## Challenges & Wins  
+## Challenges and Wins  
 This project really helped solidify my understanding of truly separating the DOM and the Data Model. I definately should have incorporated more developer empathy toward the beginning of the project, which would have greatly reduced the amount of time spent refactoring. I greatly appreciate the assistance from my instructors, mentor and classmates.
 
 ## Contributors    
