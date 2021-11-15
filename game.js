@@ -33,7 +33,7 @@ class Game {
       || humanSelection === 'alien' && computerSelection === 'rock'
       || humanSelection === 'alien' && computerSelection === 'scissors'
     ){
-      this.player1.humanWins++;
+      this.player1.wins++;
       this.humanWon = true;
       this.computerWon = false;
       this.draw = false;
@@ -50,7 +50,7 @@ class Game {
       || humanSelection === 'alien' && computerSelection === 'paper'
       || humanSelection === 'alien' && computerSelection === 'lizard'
     ){
-      this.player2.computerWins++;
+      this.player2.wins++;
       this.humanWon = false;
       this.computerWon = true;
       this.draw = false;

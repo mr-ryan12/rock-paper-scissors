@@ -2,37 +2,17 @@ class Player {
   constructor(name, token) {
     this.name = name;
     this.token = token;
-    this.humanWins = this.retrieveWinsFromStorage().playerOne;
-    this.computerWins = this.retrieveWinsFromStorage().playerTwo;
+    this.wins = this.retrieveWinsFromStorage() || 0;
   }
 
   saveWinsToStorage() {
-    if (this.name === 'Player 1') {
-      localStorage.setItem('playerOneWins', JSON.stringify(this.humanWins));
-    }
-    if (this.name === 'Player 2') {
-      localStorage.setItem('playerTwoWins', JSON.stringify(this.computerWins));
-    }
+    localStorage.setItem(`${this.name}`, JSON.stringify(this.wins));
   }
 
   retrieveWinsFromStorage() {
-    var totalHumanWins = JSON.parse(localStorage.getItem('playerOneWins'));
-    var totalComputerWins = JSON.parse(localStorage.getItem('playerTwoWins'));
-    var wins;
+    var totalWins = JSON.parse(localStorage.getItem(`${this.name}`));
 
-    if (totalHumanWins === null) {
-      totalHumanWins = 0;
-    }
-    if (totalComputerWins === null) {
-      totalComputerWins = 0;
-    }
-
-    wins = {
-      playerOne: totalHumanWins,
-      playerTwo: totalComputerWins
-    }
-
-    return wins;
+    return totalWins;
   } 
 
   assignHumanPlayerSelection() {

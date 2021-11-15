@@ -208,6 +208,6 @@ function displayGameSelection() {
 }
 
 function displayWins() {
-  humanWins.innerText = `Wins: ${currentGame.player1.retrieveWinsFromStorage().playerOne}`;
-  computerWins.innerText = `Wins: ${currentGame.player2.retrieveWinsFromStorage().playerTwo}`;
+  humanWins.innerText = `Wins: ${currentGame.player1.wins}`;
+  computerWins.innerText = `Wins: ${currentGame.player2.wins}`;
 }
