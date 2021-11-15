@@ -25,9 +25,13 @@ var scissorsSelectionButton = document.getElementById('scissorsSelection');
 
 // Event Listeners
 window.addEventListener('load', displayWins);
-classicGameButton.addEventListener('click', displayClassicGame);
 changeGameButton.addEventListener('click', displayGameSelection);
-difficultGameButton.addEventListener('click', displayDifficultGame);
+classicGameButton.addEventListener('click', function() {
+  displayGame(classicGameButton, [fighterSelectionContainer]);
+});
+difficultGameButton.addEventListener('click', function() {
+  displayGame(difficultGameButton, [fighterSelectionContainer, lizardSelectionButton, alienSelectionButton]);
+});
 rockSelectionButton.addEventListener('click', function() {
   displayOnClick(displayTokenOnRock, rockSelectionButton)
 });
@@ -71,21 +75,10 @@ function displayOnClick(displayTokenOnElement, fighterSelectionButton) {
   }
 }
 
-function displayClassicGame() {
-  classicGameButton.classList.add('selected');
+function displayGame(button, elements) {
+  button.classList.add('selected');
   hideElements([gameSelectionContainer]);
-  displayElements([fighterSelectionContainer]);
-  chooseYourGameText.innerText = 'Choose your fighter!';
-}
-
-function displayDifficultGame() {
-  difficultGameButton.classList.add('selected');
-  hideElements([gameSelectionContainer]);
-  displayElements([
-    fighterSelectionContainer,
-    lizardSelectionButton,
-    alienSelectionButton
-  ]);
+  displayElements(elements);
   chooseYourGameText.innerText = 'Choose your fighter!';
 }
 
@@ -164,12 +157,12 @@ function hideClassicWinnerDisplayContainer() {
     winnerDisplayContainer
   ]);
   displayElements([changeGameButton]);
-  displayClassicGame();
+  displayGame(classicGameButton, [fighterSelectionContainer]);
 }
 
 function hideDifficultWinnerDisplayContainer() {
   displayElements([changeGameButton]);
-  displayDifficultGame();
+  displayGame(difficultGameButton, [fighterSelectionContainer,lizardSelectionButton, alienSelectionButton]);
   hideElements([
     displayTokenOnRock,
     displayTokenOnPaper,
