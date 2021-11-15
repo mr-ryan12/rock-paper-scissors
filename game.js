@@ -8,8 +8,8 @@ class Game {
   }
 
   winConditions() {
-    var humanSelection = this.player1.assignHumanPlayerSelection();
-    var computerSelection = this.player2.takeTurn();
+    var humanSelection = this.player1.takeTurn().humanSelection;
+    var computerSelection = this.player2.takeTurn().computerSelection;
 
     if (
       humanSelection === 'rock' && computerSelection === 'rock'

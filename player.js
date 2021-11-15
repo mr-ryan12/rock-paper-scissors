@@ -15,28 +15,29 @@ class Player {
     return totalWins;
   } 
 
-  assignHumanPlayerSelection() {
-    if (rockSelectionButton.classList.contains('selected')) {
-      return this.humanSelection = 'rock';
-    } else if (paperSelectionButton.classList.contains('selected')) {
-      return this.humanSelection = 'paper';
-    } else if (scissorsSelectionButton.classList.contains('selected')) {
-      return this.humanSelection = 'scissors';
-    } else if (lizardSelectionButton.classList.contains('selected')) {
-      return this.humanSelection = 'lizard';
-    } else if (alienSelectionButton.classList.contains('selected')) {
-      return this.humanSelection = 'alien';
-    }
-  }
-
   takeTurn() {
     var selections = ['rock', 'paper', 'scissors'];
 
     if (difficultGameButton.classList.contains('selected')) {
       selections.push('lizard', 'alien');
     }
+    if (rockSelectionButton.classList.contains('selected')) {
+      this.humanSelection = 'rock';
+    } else if (paperSelectionButton.classList.contains('selected')) {
+      this.humanSelection = 'paper';
+    } else if (scissorsSelectionButton.classList.contains('selected')) {
+      this.humanSelection = 'scissors';
+    } else if (lizardSelectionButton.classList.contains('selected')) {
+      this.humanSelection = 'lizard';
+    } else if (alienSelectionButton.classList.contains('selected')) {
+      this.humanSelection = 'alien';
+    }
+    this.computerSelection = selections[this.getRandomIndex(selections)];
 
-    return this.computerSelection = selections[this.getRandomIndex(selections)];
+    return {
+      computerSelection: this.computerSelection,
+      humanSelection: this.humanSelection
+    };
   }
 
   getRandomIndex(array) {
