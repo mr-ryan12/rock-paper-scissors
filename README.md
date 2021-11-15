@@ -21,17 +21,14 @@ This application allows a user to play a game of 'Rock, Paper, Scissors' against
 - Run `open index.html` in the terminal
    
 ## Screenshots  
-Users can choose their game type in the main view.  
-![intro](## Place main view gif here)  
-
-Displays choices for 'Classic' game   
-![classic-fighter-selection-view](## Place classic fighter view here)
+Users can choose their game type in the main view  
+![Classic](https://user-images.githubusercontent.com/62816754/141864158-aeb67c41-c478-4c84-968a-49db75ad4e6e.gif)
   
 Displays choices for 'Difficult' game  
-![difficult-fighter-selection-view](## Place difficult game view here)
+![difficult-fighter-selection-view](https://user-images.githubusercontent.com/62816754/141864387-911071ff-a80c-4b36-adff-df3e730ae63b.gif)
 
 Displays the winner of the round and automatically displays the selections again to start a new game
-![winner-view](## Place winner container gif here)
+![winner-view](https://user-images.githubusercontent.com/62816754/141864569-10dc8f98-434e-4fe6-8eb0-26bed79fee73.gif)
 
 ## Links  
 Checkout the Turing spec sheet [here](https://frontend.turing.edu/projects/module-1/rock-paper-scissors-solo.html)
