@@ -69,7 +69,7 @@ class Game {
   }
 
   selectionTimeout(button) {
-    setTimeout(function() {checkSelection(button)}, 500);
+    setTimeout(function() {checkSelection(button)}, 300);
   }
 
   clearWinnerTimeout() {

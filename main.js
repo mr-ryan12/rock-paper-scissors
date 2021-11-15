@@ -168,9 +168,9 @@ function removeGameSelection() {
 }
 
 function displayGameSelection() {
+  currentGame.clearWinnerTimeout();
   removeGameSelection();
   chooseYourGameText.innerText = 'Choose your game!';
-  currentGame.clearWinnerTimeout();
   displayElements([gameSelectionContainer]);
   hideElements([fighterSelectionContainer, lizardSelectionButton, alienSelectionButton, changeGameButton, winnerDisplayContainer,
                 displayTokenOnRock, displayTokenOnPaper, displayTokenOnScissors, displayTokenOnLizard, displayTokenOnAlien]);
