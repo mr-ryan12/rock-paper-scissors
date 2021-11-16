@@ -39,7 +39,7 @@ Checkout the Turing spec sheet [here](https://frontend.turing.edu/projects/modul
 - Add animations to the results of the game  
   
 ## Challenges and Wins  
-This project really helped solidify my understanding of truly separating the DOM and the Data Model. I definately should have incorporated more developer empathy toward the beginning of the project, which would have greatly reduced the amount of time spent refactoring. I greatly appreciate the assistance from my instructors, mentor and classmates.
+This project really helped solidify my understanding of truly separating the DOM and the Data Model. I definitely should have incorporated more developer empathy toward the beginning of the project, which would have greatly reduced the amount of time spent refactoring. I greatly appreciate the assistance from my instructors, mentor and classmates.
 
 ## Contributors    
 [Ryan McBride](https://github.com/mr-ryan12)
