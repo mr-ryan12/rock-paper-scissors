@@ -84,10 +84,7 @@ aside {
   height: 230px;
 }
 
-.classic-header {
-  margin-top: 0px;
-}
-
+.classic-header,
 .difficult-header {
   margin-top: 0px;
 }
@@ -132,9 +129,9 @@ button:hover {
 .alien-selection {
   background: none;
   border: none;
-  background-size: 100%;
-  height: 184px;
-  width: 182px;
+  background-size: 200px;
+  height: 200px;
+  width: 200px;
   background-repeat: no-repeat;
 }
 
@@ -167,7 +164,11 @@ button:hover {
 
 .display-human-selection,
 .display-computer-selection {
-  height: 70%;
+  height: 200px;
+}
+
+.display-human-selection {
+  margin-right: 25px;
 }
 
 .change-game-btn {
@@ -184,7 +185,7 @@ button:hover {
 .display-token-on-scissors,
 .display-token-on-lizard,
 .display-token-on-alien {
-  margin-top: 152px;
+  margin-top: 170px;
   font-size: 33px;
 }
 

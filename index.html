@@ -10,20 +10,20 @@
   </head>
   <body>
     <main>
-      <div class="left-container">
+      <section class="left-container">
         <aside>
           <p class="human-icon">👦</p>
           <h3 class="human-label">Human</h3>
-          <h4>Wins: <span id="humanWins">0</span></h4>
+          <h4 id="humanWins">Wins: 0</h4>
           <button class="change-game-btn hidden" id="changeGameBtn">CHANGE GAME?</button>
         </aside>
-      </div>
-      <div class="game-container">
+      </section>
+      <section class="game-container">
         <h1 class="header">Rock, Paper, Scissors</h1>
         <h3 class="choose-your-game" id="chooseYourGame">Choose your game!</h3>
-        <div class="game-selection-container" id="gameSelectionContainer">
+        <section class="game-selection-container" id="gameSelectionContainer">
           <button class="classic-game-btn" id="classicGameBtn">
-            <h3 class="classic-header">🪨 CLASSIC ✂️</h3>
+            <h3 class="classic-header">🗿 CLASSIC ✂️</h3>
             <p class="game-text">rock > scissors</p>
             <p class="game-text">paper > rock</p>
             <p class="game-text">scissors > paper</p>
@@ -36,28 +36,38 @@
             <p class="game-text">lizard > paper & alien</p>
             <p class="game-text">alien > scissors & rock</p>
           </button>
-        </div>
-        <div class="fighter-selection-container hidden" id="fighterSelectionContainer">
-          <button class="rock-selection" id="rockSelection"><p class="display-token-on-rock hidden" id="displayTokenOnRock">👦</p></button>
-          <button class="paper-selection" id="paperSelection"><p class="display-token-on-paper hidden" id="displayTokenOnPaper">👦</p></button>
-          <button class="scissors-selection" id="scissorsSelection"><p class="display-token-on-scissors hidden" id="displayTokenOnScissors">👦</p></button>
-        </div>
-        <div class="difficult-fighter-selection-container" id="difficultFighterSelectionContainer">
-          <button class="lizard-selection hidden" id="lizardSelectionBtn"><p class="display-token-on-lizard hidden" id="displayTokenOnLizard">👦</p></button>
-          <button class="alien-selection hidden" id="alienSelectionBtn"><p class="display-token-on-alien hidden" id="displayTokenOnAlien">👦</p></button>
-        </div>
-        <div class="winner-display-container hidden" id="winnerDisplayContainer">
+        </section>
+        <section class="fighter-selection-container hidden" id="fighterSelectionContainer">
+          <button class="rock-selection" id="rockSelection">
+            <p class="display-token-on-rock hidden" id="displayTokenOnRock">👦</p>
+          </button>
+          <button class="paper-selection" id="paperSelection">
+            <p class="display-token-on-paper hidden" id="displayTokenOnPaper">👦</p>
+          </button>
+          <button class="scissors-selection" id="scissorsSelection">
+            <p class="display-token-on-scissors hidden" id="displayTokenOnScissors">👦</p>
+          </button>
+        </section>
+        <section class="difficult-fighter-selection-container" id="difficultFighterSelectionContainer">
+          <button class="lizard-selection hidden" id="lizardSelectionBtn">
+            <p class="display-token-on-lizard hidden" id="displayTokenOnLizard">👦</p>
+          </button>
+          <button class="alien-selection hidden" id="alienSelectionBtn">
+            <p class="display-token-on-alien hidden" id="displayTokenOnAlien">👦</p>
+          </button>
+        </section>
+        <section class="winner-display-container hidden" id="winnerDisplayContainer">
           <img src="./assets/happy-rocks.png" class="display-human-selection" id="displayHumanSelection" alt="Happy Rocks">
           <img src="./assets/happy-paper.png" class="display-computer-selection" id="displayComputerSelection" alt="Happy Paper">
-        </div>
-      </div>
-      <div class="right-container">
+        </section>
+      </section>
+      <section class="right-container">
         <aside>
           <p class="computer-icon">🤖</p>
           <h3 class="computer-label">Computer</h3>
-          <h4>Wins: <span id="computerWins">0</span></h4>
+          <h4 id="computerWins">Wins: 0</h4>
         </aside>
-      </div>
+      </section>
     </main>
     <script type="text/javascript" src="player.js"></script>
     <script type="text/javascript" src="game.js"></script>

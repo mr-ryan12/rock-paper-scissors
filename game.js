@@ -7,160 +7,87 @@ class Game {
     this.draw = false;
   }
 
-  gamePlay() {
-    var humanSelection = this.player1.assignHumanPlayerSelection();
-    var computerSelection = this.player2.takeTurn();
+  winConditions() {
+    var humanSelection = this.player1.takeTurn().humanSelection;
+    var computerSelection = this.player2.takeTurn().computerSelection;
 
-    if (humanSelection === 'rock' && computerSelection === 'rock') {
-      this.humanWon = false;
-      this.computerWon = false;
+    if (
+      humanSelection === 'rock' && computerSelection === 'rock'
+      || humanSelection === 'paper' && computerSelection === 'paper'
+      || humanSelection === 'scissors' && computerSelection === 'scissors'
+      || humanSelection === 'lizard' && computerSelection === 'lizard'
+      || humanSelection === 'alien' && computerSelection === 'alien'
+    ){
       this.draw = true;
-    } else if (humanSelection === 'rock' && computerSelection === 'paper') {
-      this.player2.computerWins++;
-      this.humanWon = false;
-      this.computerWon = true;
-      this.draw = false;
-      this.player2.saveWinsToStorage();
-    } else if (humanSelection === 'rock' && computerSelection === 'scissors') {
-      this.player1.humanWins++;
+    } else if (
+      humanSelection === 'rock' && computerSelection === 'scissors'
+      || humanSelection === 'rock' && computerSelection === 'lizard'
+      || humanSelection === 'paper' && computerSelection === 'rock'
+      || humanSelection === 'paper' && computerSelection === 'alien'
+      || humanSelection === 'scissors' && computerSelection === 'paper'
+      || humanSelection === 'scissors' && computerSelection === 'lizard'
+      || humanSelection === 'lizard' && computerSelection === 'paper'
+      || humanSelection === 'lizard' && computerSelection === 'alien'
+      || humanSelection === 'alien' && computerSelection === 'rock'
+      || humanSelection === 'alien' && computerSelection === 'scissors'
+    ){
+      this.player1.wins++;
       this.humanWon = true;
-      this.computerWon = false;
-      this.draw = false;
       this.player1.saveWinsToStorage();
-    } else if (humanSelection === 'rock' && computerSelection === 'lizard') {
-      this.player1.humanWins++;
-      this.humanWon = true;
-      this.computerWon = false;
-      this.draw = false;
-      this.player1.saveWinsToStorage();
-    } else if (humanSelection === 'rock' && computerSelection === 'alien') {
-      this.player2.computerWins++;
-      this.humanWon = false;
+    } else if (
+      humanSelection === 'rock' && computerSelection === 'paper'
+      || humanSelection === 'rock' && computerSelection === 'alien'
+      || humanSelection === 'paper' && computerSelection === 'scissors'
+      || humanSelection === 'paper' && computerSelection === 'lizard'
+      || humanSelection === 'scissors' && computerSelection === 'rock'
+      || humanSelection === 'scissors' && computerSelection === 'alien'
+      || humanSelection === 'lizard' && computerSelection === 'rock'
+      || humanSelection === 'lizard' && computerSelection === 'scissors'
+      || humanSelection === 'alien' && computerSelection === 'paper'
+      || humanSelection === 'alien' && computerSelection === 'lizard'
+    ){
+      this.player2.wins++;
       this.computerWon = true;
-      this.draw = false;
-      this.player2.saveWinsToStorage();
-    } else if (humanSelection === 'paper' && computerSelection === 'paper') {
-      this.humanWon = false;
-      this.computerWon = false;
-      this.draw = true;
-    } else if (humanSelection === 'paper' && computerSelection === 'rock') {
-      this.player1.humanWins++;
-      this.humanWon = true;
-      this.computerWon = false;
-      this.draw = false;
-      this.player1.saveWinsToStorage();
-    } else if (humanSelection === 'paper' && computerSelection === 'scissors') {
-      this.player2.computerWins++;
-      this.humanWon = false;
-      this.computerWon = true;
-      this.draw = false;
-      this.player2.saveWinsToStorage();
-    } else if (humanSelection === 'paper' && computerSelection === 'lizard') {
-      this.player2.computerWins++;
-      this.humanWon = false;
-      this.computerWon = true;
-      this.draw = false;
-      this.player2.saveWinsToStorage();
-    } else if (humanSelection === 'paper' && computerSelection === 'alien') {
-      this.player1.humanWins++;
-      this.humanWon = true;
-      this.computerWon = false;
-      this.draw = false;
-      this.player1.saveWinsToStorage();
-    } else if (humanSelection === 'scissors' && computerSelection === 'scissors') {
-      this.humanWon = false;
-      this.computerWon = false;
-      this.draw = true;
-    } else if (humanSelection === 'scissors' && computerSelection === 'rock') {
-      this.player2.computerWins++;
-      this.humanWon = false;
-      this.computerWon = true;
-      this.draw = false;
-      this.player2.saveWinsToStorage();
-    } else if (humanSelection === 'scissors' && computerSelection === 'paper') {
-      this.player1.humanWins++;
-      this.humanWon = true;
-      this.computerWon = false;
-      this.draw = false;
-      this.player1.saveWinsToStorage();
-    } else if (humanSelection === 'scissors' && computerSelection === 'lizard') {
-      this.player1.humanWins++;
-      this.humanWon = true;
-      this.computerWon = false;
-      this.draw = false;
-      this.player1.saveWinsToStorage();
-    } else if (humanSelection === 'scissors' && computerSelection === 'alien') {
-      this.player2.computerWins++;
-      this.humanWon = false;
-      this.computerWon = true;
-      this.draw = false;
-      this.player2.saveWinsToStorage();
-    } else if (humanSelection === 'lizard' && computerSelection === 'lizard') {
-      this.humanWon = false;
-      this.computerWon = false;
-      this.draw = true;
-    } else if (humanSelection === 'lizard' && computerSelection === 'rock') {
-      this.player2.computerWins++;
-      this.humanWon = false;
-      this.computerWon = true;
-      this.draw = false;
-      this.player2.saveWinsToStorage();
-    } else if (humanSelection === 'lizard' && computerSelection === 'paper') {
-      this.player1.humanWins++;
-      this.humanWon = true;
-      this.computerWon = false;
-      this.draw = false;
-      this.player1.saveWinsToStorage();
-    } else if (humanSelection === 'lizard' && computerSelection === 'scissors') {
-      this.player2.computerWins++;
-      this.humanWon = false;
-      this.computerWon = true;
-      this.draw = false;
-      this.player2.saveWinsToStorage();
-    } else if (humanSelection === 'lizard' && computerSelection === 'alien') {
-      this.player1.humanWins++;
-      this.humanWon = true;
-      this.computerWon = false;
-      this.draw = false;
-      this.player1.saveWinsToStorage();
-    } else if (humanSelection === 'alien' && computerSelection === 'alien') {
-      this.humanWon = false;
-      this.computerWon = false;
-      this.draw = true;
-    } else if (humanSelection === 'alien' && computerSelection === 'rock') {
-      this.player1.humanWins++;
-      this.humanWon = true;
-      this.computerWon = false;
-      this.draw = false;
-      this.player1.saveWinsToStorage();
-    } else if (humanSelection === 'alien' && computerSelection === 'paper') {
-      this.player2.computerWins++;
-      this.humanWon = false;
-      this.computerWon = true;
-      this.draw = false;
-      this.player2.saveWinsToStorage();
-    } else if (humanSelection === 'alien' && computerSelection === 'scissors') {
-      this.player1.humanWins++;
-      this.humanWon = true;
-      this.computerWon = false;
-      this.draw = false;
-      this.player1.saveWinsToStorage();
-    } else if (humanSelection === 'alien' && computerSelection === 'lizard') {
-      this.player2.computerWins++;
-      this.humanWon = false;
-      this.computerWon = true;
-      this.draw = false;
       this.player2.saveWinsToStorage();
     }
   }
 
-  reset() {
+  resetPlayers() {
     this.player1.humanSelection = '';
     this.player2.computerSelection = '';
-    rockSelectionButton.classList.remove('selected');
-    paperSelectionButton.classList.remove('selected');
-    scissorsSelectionButton.classList.remove('selected');
-    lizardSelectionButton.classList.remove('selected');
-    alienSelectionButton.classList.remove('selected');
+    this.player2.difficultSelected = false;
+    this.player1.rockSelection = false;
+    this.player1.paperSelection = false;
+    this.player1.scissorsSelection = false;
+    this.player1.lizardSelection = false;
+    this.player1.alienSelection = false;
+    this.humanWon = false;
+    this.computerWon = false;
+    this.draw = false;
+  }
+
+  selectionTimeout(button) {
+    setTimeout(function() {checkSelection(button)}, 250);
+  }
+
+  clearWinnerTimeout() {
+    clearTimeout(this.timeout);
+  }
+
+  browserSpeak() {
+    var compliments = ['You\'re the bees knees', 'Great job', 'I believe in you', 'You make my day brighter'];
+    var taunts = ['Robots will rule the world', 'Better luck next time', 'Let\'s play again', 'Don\'t feel too bad'];
+    var randomIndex = this.player1.getRandomIndex(compliments);
+    var congratulations = new SpeechSynthesisUtterance(`Congratulations player 1. ${compliments[randomIndex]}.`);
+    var betterLuckNextTime = new SpeechSynthesisUtterance(`Sorry player 1. You lost. ${taunts[randomIndex]}.`);
+    var draw = new SpeechSynthesisUtterance('Looks like it\'s a draw.');
+    
+    if (this.humanWon){
+      speechSynthesis.speak(congratulations);
+    } else if (this.computerWon) {
+      speechSynthesis.speak(betterLuckNextTime);
+    } else {
+      speechSynthesis.speak(draw);
+    }
   }
 }

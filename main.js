@@ -1,108 +1,110 @@
 // Query Selectors
-var gameSelectionContainer = document.getElementById('gameSelectionContainer');
-var fighterSelectionContainer = document.getElementById('fighterSelectionContainer');
-var chooseYourGameText = document.getElementById('chooseYourGame');
-var humanSelectionImage = document.getElementById('displayHumanSelection');
-var computerSelectionImage = document.getElementById('displayComputerSelection');
-var winnerDisplayContainer = document.getElementById('winnerDisplayContainer');
 var humanWins = document.getElementById('humanWins');
 var computerWins = document.getElementById('computerWins');
+var chooseYourGameText = document.getElementById('chooseYourGame');
 var displayTokenOnRock = document.getElementById('displayTokenOnRock');
 var displayTokenOnPaper = document.getElementById('displayTokenOnPaper');
-var displayTokenOnScissors = document.getElementById('displayTokenOnScissors');
-var displayTokenOnLizard = document.getElementById('displayTokenOnLizard');
 var displayTokenOnAlien = document.getElementById('displayTokenOnAlien');
-
+var humanSelectionImage = document.getElementById('displayHumanSelection');
+var displayTokenOnLizard = document.getElementById('displayTokenOnLizard');
+var winnerDisplayContainer = document.getElementById('winnerDisplayContainer');
+var displayTokenOnScissors = document.getElementById('displayTokenOnScissors');
+var gameSelectionContainer = document.getElementById('gameSelectionContainer');
+var computerSelectionImage = document.getElementById('displayComputerSelection');
+var fighterSelectionContainer = document.getElementById('fighterSelectionContainer');
 
 // Variables targeting button elements
+var changeGameButton = document.getElementById('changeGameBtn');
 var classicGameButton = document.getElementById('classicGameBtn');
+var rockSelectionButton = document.getElementById('rockSelection');
+var paperSelectionButton = document.getElementById('paperSelection');
 var difficultGameButton = document.getElementById('difficultGameBtn');
 var alienSelectionButton = document.getElementById('alienSelectionBtn');
 var lizardSelectionButton = document.getElementById('lizardSelectionBtn');
-var rockSelectionButton = document.getElementById('rockSelection');
-var paperSelectionButton = document.getElementById('paperSelection');
 var scissorsSelectionButton = document.getElementById('scissorsSelection');
-var changeGameButton = document.getElementById('changeGameBtn');
 
 // Event Listeners
 window.addEventListener('load', displayWins);
-classicGameButton.addEventListener('click', displayClassicGame);
-difficultGameButton.addEventListener('click', displayDifficultGame);
-rockSelectionButton.addEventListener('click', displayOnRockClick);
-paperSelectionButton.addEventListener('click', displayOnPaperClick);
-scissorsSelectionButton.addEventListener('click', displayOnScissorClick);
-lizardSelectionButton.addEventListener('click', displayOnLizardClick);
-alienSelectionButton.addEventListener('click', displayOnAlienClick);
 changeGameButton.addEventListener('click', displayGameSelection);
+classicGameButton.addEventListener('click', function() {
+  displayGame(classicGameButton, [fighterSelectionContainer]);
+});
+difficultGameButton.addEventListener('click', function() {
+  displayGame(difficultGameButton, [fighterSelectionContainer, lizardSelectionButton, alienSelectionButton]);
+});
+rockSelectionButton.addEventListener('click', function() {
+  displayOnClick(displayTokenOnRock, rockSelectionButton)
+});
+paperSelectionButton.addEventListener('click', function() {
+  displayOnClick(displayTokenOnPaper, paperSelectionButton)
+});
+alienSelectionButton.addEventListener('click', function() {
+  displayOnClick(displayTokenOnAlien, alienSelectionButton)
+});
+lizardSelectionButton.addEventListener('click', function() {
+  displayOnClick(displayTokenOnLizard, lizardSelectionButton)
+});
+scissorsSelectionButton.addEventListener('click', function() {
+  displayOnClick(displayTokenOnScissors, scissorsSelectionButton)
+});
 
 var currentGame = new Game();
-// Ask if these are okay - assigned on line 157. Maybe place all setTimeout/clearTimeout logic in game.js
-var idClassicTimeout;
-var idDifficultTimeout;
 
-function displayElement(element) {
-  element.classList.remove('hidden');
+function displayElements(elements) {
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].classList.remove('hidden');
+  }
 }
 
-function hideElement(element) {
-  element.classList.add('hidden');
+function hideElements(elements) {
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].classList.add('hidden');
+  }
 }
 
-function displayClassicGame() {
-  classicGameButton.classList.add('selected');
-  hideElement(gameSelectionContainer);
-  displayElement(fighterSelectionContainer);
+function resetButtons(buttons) {
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].classList.remove('selected');
+  }
+}
+
+function displayOnClick(displayTokenOnElement, fighterSelectionButton) {
+  if (displayTokenOnElement.classList.contains('hidden')) {
+    displayElements([displayTokenOnElement]);
+    currentGame.selectionTimeout(fighterSelectionButton);
+  }
+}
+
+function displayGame(button, elements) {
+  button.classList.add('selected');
+  hideElements([gameSelectionContainer]);
+  displayElements(elements);
   chooseYourGameText.innerText = 'Choose your fighter!';
 }
 
-function displayDifficultGame() {
-  difficultGameButton.classList.add('selected');
-  hideElement(gameSelectionContainer);
-  displayElement(fighterSelectionContainer);
-  displayElement(lizardSelectionButton);
-  displayElement(alienSelectionButton);
-  chooseYourGameText.innerText = 'Choose your fighter!';
-}
-
-//Possibly place button elements in an array and iterate over them adding an eventListener
-function checkRockSelection() {
-  rockSelectionButton.classList.add('selected');
-  gamePlay();
-}
-
-function checkPaperSelection() {
-  paperSelectionButton.classList.add('selected');
-  gamePlay();
-}
-
-function checkScissorsSelection() {
-  scissorsSelectionButton.classList.add('selected');
-  gamePlay();
-}
-
-function checkLizardSelection() {
-  lizardSelectionButton.classList.add('selected');
-  gamePlay();
-}
-
-function checkAlienSelection() {
-  alienSelectionButton.classList.add('selected');
+function checkSelection(selection) {
+  selection.classList.add('selected');
+  checkPlayerSelection();
   gamePlay();
 }
 
 function gamePlay() {
-  currentGame.gamePlay();
+  currentGame.winConditions();
   displayWinnerContainer();
   displayWins();
-  resetGame();
-}
-
-function resetGame() {
-  currentGame.reset();
-  changeToFighterSelectionView();
+  currentGame.resetPlayers();
+  setWinnerTimeout();
+  resetButtons([
+    rockSelectionButton,
+    paperSelectionButton,
+    scissorsSelectionButton,
+    lizardSelectionButton,
+    alienSelectionButton
+  ]);
 }
 
 function displayWinnerText() {
+  currentGame.browserSpeak();
   if (currentGame.humanWon) {
     chooseYourGameText.innerText = `${currentGame.player1.token} Human won this round! ${currentGame.player1.token}`;
   } else if (currentGame.computerWon) {
@@ -112,124 +114,119 @@ function displayWinnerText() {
   }
 }
 
-function displayHumanFighter() {
-  if (currentGame.player1.humanSelection === 'rock') {
-    humanSelectionImage.src = './assets/happy-rocks.png';
-  } else if (currentGame.player1.humanSelection === 'paper') {
-    humanSelectionImage.src = './assets/happy-paper.png';
-  } else if (currentGame.player1.humanSelection === 'scissors') {
-    humanSelectionImage.src = './assets/scissors-copy.png';
-  } else if (currentGame.player1.humanSelection === 'lizard') {
-    humanSelectionImage.src = './assets/lizard.png';
-  } else if (currentGame.player1.humanSelection === 'alien') {
-    humanSelectionImage.src = './assets/happy-alien.png';
-  }
-}
+function displayFighter(player, selection, imageRef) {
+  var currentGameSelection = currentGame[player][selection];
 
-function displayComputerFighter() {
-  if (currentGame.player2.computerSelection === 'rock') {
-    computerSelectionImage.src = './assets/happy-rocks.png';
-  } else if (currentGame.player2.computerSelection === 'paper') {
-    computerSelectionImage.src = './assets/happy-paper.png';
-  } else if (currentGame.player2.computerSelection === 'scissors') {
-    computerSelectionImage.src = './assets/scissors-copy.png';
-  } else if (currentGame.player2.computerSelection === 'lizard') {
-    computerSelectionImage.src = './assets/lizard.png';
-  } else if (currentGame.player2.computerSelection === 'alien') {
-    computerSelectionImage.src = './assets/happy-alien.png';
+  if (currentGameSelection === 'rock') {
+    imageRef.src = './assets/happy-rocks.png';
+    imageRef.alt = 'Happy Rocks';
+  } else if (currentGameSelection === 'paper') {
+    imageRef.src = './assets/happy-paper.png';
+    imageRef.alt = 'Happy Paper';
+  } else if (currentGameSelection === 'scissors') {
+    imageRef.src = './assets/scissors-copy.png';
+    imageRef.alt = 'Happy Scissors';
+  } else if (currentGameSelection === 'lizard') {
+    imageRef.src = './assets/lizard.png';
+    imageRef.alt = 'Happy Lizard';
+  } else if (currentGameSelection === 'alien') {
+    imageRef.src = './assets/happy-alien.png';
+    imageRef.alt = 'Happy Alien';
   }
 }
 
 function displayWinnerContainer() {
-  hideElement(gameSelectionContainer);
-  hideElement(fighterSelectionContainer);
-  hideElement(lizardSelectionButton);
-  hideElement(alienSelectionButton);
-  displayElement(winnerDisplayContainer);
+  hideElements([
+    gameSelectionContainer,
+    fighterSelectionContainer,
+    lizardSelectionButton,
+    alienSelectionButton
+  ]);
+  displayElements([winnerDisplayContainer]);
   displayWinnerText();
-  displayHumanFighter();
-  displayComputerFighter();
-}
-
-
-// Possibly place all setTimeout/clearTimeout logic in game.js
-function changeToFighterSelectionView() {
-  if (classicGameButton.classList.contains('selected')) {
-    idClassicTimeout = setTimeout(hideClassicWinnerDisplayContainer, 2500);
-  } else if (difficultGameButton.classList.contains('selected')) {
-    idDifficultTimeout = setTimeout(hideDifficultWinnerDisplayContainer, 2500);
-  }
-
-  return idClassicTimeout, idDifficultTimeout;
+  displayFighter('player1', 'humanSelection', humanSelectionImage);
+  displayFighter('player2', 'computerSelection', computerSelectionImage);
 }
 
 function hideClassicWinnerDisplayContainer() {
-  hideTokens();
-  hideElement(winnerDisplayContainer);
-  displayElement(changeGameButton);
-  displayClassicGame();
+  hideElements([
+    displayTokenOnRock,
+    displayTokenOnPaper,
+    displayTokenOnScissors,
+    displayTokenOnLizard,
+    displayTokenOnAlien,
+    winnerDisplayContainer
+  ]);
+  displayElements([changeGameButton]);
+  displayGame(classicGameButton, [fighterSelectionContainer]);
 }
 
 function hideDifficultWinnerDisplayContainer() {
-  hideTokens();
-  hideElement(winnerDisplayContainer);
-  displayElement(changeGameButton);
-  displayDifficultGame();
+  displayElements([changeGameButton]);
+  displayGame(difficultGameButton, [fighterSelectionContainer,lizardSelectionButton, alienSelectionButton]);
+  hideElements([
+    displayTokenOnRock,
+    displayTokenOnPaper,
+    displayTokenOnScissors,
+    displayTokenOnLizard,
+    displayTokenOnAlien,
+    winnerDisplayContainer
+  ]);
+}
+
+function removeGameSelection() {
+  if (classicGameButton.classList.contains('selected')) {
+    return classicGameButton.classList.remove('selected');
+  } else if (difficultGameButton.classList.contains('selected')) {
+    return difficultGameButton.classList.remove('selected');
+  }
 }
 
 function displayGameSelection() {
-  if (classicGameButton.classList.contains('selected')) {
-    classicGameButton.classList.remove('selected');
-  }
-  if (difficultGameButton.classList.contains('selected')) {
-    difficultGameButton.classList.remove('selected');
-  }
-
-  // Possibly place the below (or above) in another function and invoke inside of this one
-  clearTimeout(idClassicTimeout);
-  clearTimeout(idDifficultTimeout);
-  displayElement(gameSelectionContainer);
-  hideElement(fighterSelectionContainer);
-  hideElement(lizardSelectionButton);
-  hideElement(alienSelectionButton);
-  hideElement(changeGameButton);
-  hideElement(winnerDisplayContainer);
+  currentGame.clearWinnerTimeout();
+  removeGameSelection();
+  chooseYourGameText.innerText = 'Choose your game!';
+  displayElements([gameSelectionContainer]);
+  hideElements([
+    fighterSelectionContainer,
+    lizardSelectionButton,
+    alienSelectionButton,
+    changeGameButton,
+    winnerDisplayContainer,
+    displayTokenOnRock,
+    displayTokenOnPaper,
+    displayTokenOnScissors,
+    displayTokenOnLizard,
+    displayTokenOnAlien
+  ]);
 }
 
 function displayWins() {
-  humanWins.innerText = `${currentGame.player1.retrieveWinsFromStorage().playerOne}`;
-  computerWins.innerText = `${currentGame.player2.retrieveWinsFromStorage().playerTwo}`;
+  humanWins.innerText = `Wins: ${currentGame.player1.wins}`;
+  computerWins.innerText = `Wins: ${currentGame.player2.wins}`;
 }
 
-function displayOnRockClick() {
-  displayElement(displayTokenOnRock);
-  setTimeout(checkRockSelection, 110);
+function setWinnerTimeout() {
+  if (classicGameButton.classList.contains('selected')) {
+    currentGame.timeout = setTimeout(hideClassicWinnerDisplayContainer, 2000);
+  } else if (difficultGameButton.classList.contains('selected')) {
+    currentGame.timeout = setTimeout(hideDifficultWinnerDisplayContainer, 2000);
+  }
 }
 
-function displayOnPaperClick() {
-  displayElement(displayTokenOnPaper);
-  setTimeout(checkPaperSelection, 110);
-}
-
-function displayOnScissorClick() {
-  displayElement(displayTokenOnScissors);
-  setTimeout(checkScissorsSelection, 110);
-}
-
-function displayOnLizardClick() {
-  displayElement(displayTokenOnLizard);
-  setTimeout(checkLizardSelection, 110);
-}
-
-function displayOnAlienClick() {
-  displayElement(displayTokenOnAlien);
-  setTimeout(checkAlienSelection, 110);
-}
-
-function hideTokens() {
-  hideElement(displayTokenOnRock);
-  hideElement(displayTokenOnPaper);
-  hideElement(displayTokenOnScissors);
-  hideElement(displayTokenOnLizard);
-  hideElement(displayTokenOnAlien);
+function checkPlayerSelection() {
+  if (difficultGameButton.classList.contains('selected')) {
+    currentGame.player2.difficultSelected = true;
+  }
+  if (rockSelectionButton.classList.contains('selected')) {
+    currentGame.player1.rockSelection = true;
+  } else if (paperSelectionButton.classList.contains('selected')) {
+    currentGame.player1.paperSelection = true;
+  } else if (scissorsSelectionButton.classList.contains('selected')) {
+    currentGame.player1.scissorsSelection = true;
+  } else if (lizardSelectionButton. classList.contains('selected')) {
+    currentGame.player1.lizardSelection = true;
+  } else if (alienSelectionButton.classList.contains('selected')) {
+    currentGame.player1.alienSelection = true;
+  }
 }
