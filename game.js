@@ -80,8 +80,12 @@ class Game {
   }
 
   browserSpeak() {
-    var congratulations = new SpeechSynthesisUtterance('Congratulations player 1. You beat me.');
-    var betterLuckNextTime = new SpeechSynthesisUtterance('Sorry player 1. You lost.');
+    var compliments = ['You\'re the bees knees', 'Great job', 'I believe in you', 'You make my day brighter'];
+    var taunts = ['Robots will rule the world', 'Better luck next time', 'Let\'s play again', 'Don\'t feel too bad'];
+    var randomIndex = this.player1.getRandomIndex(compliments);
+
+    var congratulations = new SpeechSynthesisUtterance(`Congratulations player 1. ${compliments[randomIndex]}.`);
+    var betterLuckNextTime = new SpeechSynthesisUtterance(`Sorry player 1. You lost. ${taunts[randomIndex]}.`);
     var draw = new SpeechSynthesisUtterance('Looks like it\'s a draw.');
     
     if (this.humanWon){
