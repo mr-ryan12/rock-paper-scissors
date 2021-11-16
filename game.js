@@ -18,8 +18,6 @@ class Game {
       || humanSelection === 'lizard' && computerSelection === 'lizard'
       || humanSelection === 'alien' && computerSelection === 'alien'
     ){
-      this.humanWon = false;
-      this.computerWon = false;
       this.draw = true;
     } else if (
       humanSelection === 'rock' && computerSelection === 'scissors'
@@ -35,8 +33,6 @@ class Game {
     ){
       this.player1.wins++;
       this.humanWon = true;
-      this.computerWon = false;
-      this.draw = false;
       this.player1.saveWinsToStorage();
     } else if (
       humanSelection === 'rock' && computerSelection === 'paper'
@@ -51,9 +47,7 @@ class Game {
       || humanSelection === 'alien' && computerSelection === 'lizard'
     ){
       this.player2.wins++;
-      this.humanWon = false;
       this.computerWon = true;
-      this.draw = false;
       this.player2.saveWinsToStorage();
     }
   }
@@ -67,6 +61,9 @@ class Game {
     this.player1.scissorsSelection = false;
     this.player1.lizardSelection = false;
     this.player1.alienSelection = false;
+    this.humanWon = false;
+    this.computerWon = false;
+    this.draw = false;
   }
 
   selectionTimeout(button) {
