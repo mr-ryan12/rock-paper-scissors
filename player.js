@@ -18,20 +18,21 @@ class Player {
   takeTurn() {
     var selections = ['rock', 'paper', 'scissors'];
 
-    if (difficultGameButton.classList.contains('selected')) {
+    if (this.difficultSelected) {
       selections.push('lizard', 'alien');
     }
-    if (rockSelectionButton.classList.contains('selected')) {
+    if (this.rockSelection) {
       this.humanSelection = 'rock';
-    } else if (paperSelectionButton.classList.contains('selected')) {
+    } else if (this.paperSelection) {
       this.humanSelection = 'paper';
-    } else if (scissorsSelectionButton.classList.contains('selected')) {
+    } else if (this.scissorsSelection) {
       this.humanSelection = 'scissors';
-    } else if (lizardSelectionButton.classList.contains('selected')) {
+    } else if (this.lizardSelection) {
       this.humanSelection = 'lizard';
-    } else if (alienSelectionButton.classList.contains('selected')) {
+    } else if (this.alienSelection) {
       this.humanSelection = 'alien';
     }
+                
     this.computerSelection = selections[this.getRandomIndex(selections)];
 
     return {

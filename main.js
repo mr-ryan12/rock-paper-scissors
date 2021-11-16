@@ -84,6 +84,7 @@ function displayGame(button, elements) {
 
 function checkSelection(selection) {
   selection.classList.add('selected');
+  checkPlayerSelection();
   gamePlay();
 }
 
@@ -210,5 +211,22 @@ function setWinnerTimeout() {
     currentGame.timeout = setTimeout(hideClassicWinnerDisplayContainer, 2000);
   } else if (difficultGameButton.classList.contains('selected')) {
     currentGame.timeout = setTimeout(hideDifficultWinnerDisplayContainer, 2000);
+  }
+}
+
+function checkPlayerSelection() {
+  if (difficultGameButton.classList.contains('selected')) {
+    currentGame.player2.difficultSelected = true;
+  }
+  if (rockSelectionButton.classList.contains('selected')) {
+    currentGame.player1.rockSelection = true;
+  } else if (paperSelectionButton.classList.contains('selected')) {
+    currentGame.player1.paperSelection = true;
+  } else if (scissorsSelectionButton.classList.contains('selected')) {
+    currentGame.player1.scissorsSelection = true;
+  } else if (lizardSelectionButton. classList.contains('selected')) {
+    currentGame.player1.lizardSelection = true;
+  } else if (alienSelectionButton.classList.contains('selected')) {
+    currentGame.player1.alienSelection = true;
   }
 }
