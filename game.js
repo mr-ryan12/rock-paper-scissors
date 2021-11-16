@@ -63,14 +63,6 @@ class Game {
     this.player2.computerSelection = '';
   }
 
-  winnerTimeout() {
-    if (classicGameButton.classList.contains('selected')) {
-      return this.timeout = setTimeout(hideClassicWinnerDisplayContainer, 2000);
-    } else if (difficultGameButton.classList.contains('selected')) {
-      return this.timeout = setTimeout(hideDifficultWinnerDisplayContainer, 2000);
-    }
-  }
-
   selectionTimeout(button) {
     setTimeout(function() {checkSelection(button)}, 250);
   }

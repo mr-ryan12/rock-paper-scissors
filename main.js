@@ -92,7 +92,7 @@ function gamePlay() {
   displayWinnerContainer();
   displayWins();
   currentGame.resetPlayers();
-  currentGame.winnerTimeout();
+  setWinnerTimeout();
   resetButtons([
     rockSelectionButton,
     paperSelectionButton,
@@ -203,4 +203,12 @@ function displayGameSelection() {
 function displayWins() {
   humanWins.innerText = `Wins: ${currentGame.player1.wins}`;
   computerWins.innerText = `Wins: ${currentGame.player2.wins}`;
+}
+
+function setWinnerTimeout() {
+  if (classicGameButton.classList.contains('selected')) {
+    currentGame.timeout = setTimeout(hideClassicWinnerDisplayContainer, 2000);
+  } else if (difficultGameButton.classList.contains('selected')) {
+    currentGame.timeout = setTimeout(hideDifficultWinnerDisplayContainer, 2000);
+  }
 }
