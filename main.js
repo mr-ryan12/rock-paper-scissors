@@ -69,7 +69,8 @@ function resetButtons(buttons) {
 }
 
 function displayOnClick(displayTokenOnElement, fighterSelectionButton) {
-  if (displayTokenOnElement.classList.contains('hidden')) {
+  if (displayTokenOnElement.classList.contains('hidden') && !currentGame.isInProgress) {
+    currentGame.isInProgress = true;  
     displayElements([displayTokenOnElement]);
     currentGame.selectionTimeout(fighterSelectionButton);
   }
