@@ -5,6 +5,7 @@ class Game {
     this.humanWon = false;
     this.computerWon = false;
     this.draw = false;
+    this.isInProgress = false;
   }
 
   winConditions() {
@@ -64,6 +65,7 @@ class Game {
     this.humanWon = false;
     this.computerWon = false;
     this.draw = false;
+    this.isInProgress = false;
   }
 
   selectionTimeout(button) {
