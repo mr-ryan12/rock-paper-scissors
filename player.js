@@ -21,16 +21,22 @@ class Player {
     if (this.difficultSelected) {
       selections.push('lizard', 'alien');
     }
-    if (this.rockSelection) {
-      this.humanSelection = 'rock';
-    } else if (this.paperSelection) {
-      this.humanSelection = 'paper';
-    } else if (this.scissorsSelection) {
-      this.humanSelection = 'scissors';
-    } else if (this.lizardSelection) {
-      this.humanSelection = 'lizard';
-    } else if (this.alienSelection) {
-      this.humanSelection = 'alien';
+
+    switch (true) {
+      case this.rockSelection:
+        this.humanSelection = 'rock';
+        break;
+      case this.paperSelection:
+        this.humanSelection = 'paper';
+        break;
+      case this.scissorsSelection:
+        this.humanSelection = 'scissors';
+        break;
+      case this.lizardSelection:
+        this.humanSelection = 'lizard';
+        break;
+      default:
+        this.humanSelection = 'alien';
     }
                 
     this.computerSelection = selections[this.getRandomIndex(selections)];

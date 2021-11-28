@@ -51,21 +51,15 @@ scissorsSelectionButton.addEventListener('click', () => {
 var currentGame = new Game();
 
 const displayElements = (elements) => {
-  for (var i = 0; i < elements.length; i++) {
-    elements[i].classList.remove('hidden');
-  }
+  elements.forEach(element => element.classList.remove('hidden'));
 }
 
 const hideElements = (elements) => {
-  for (var i = 0; i < elements.length; i++) {
-    elements[i].classList.add('hidden');
-  }
+  elements.forEach(element => element.classList.add('hidden'));
 }
 
 const resetButtons = (buttons) => {
-  for (var i = 0; i < buttons.length; i++) {
-    buttons[i].classList.remove('selected');
-  }
+  buttons.forEach(button => button.classList.remove('selected'));
 }
 
 const displayOnClick = (displayTokenOnElement, fighterSelectionButton) => {
@@ -121,21 +115,27 @@ const displayWinnerText = () => {
 const displayFighter = (player, selection, imageRef) => {
   var currentGameSelection = currentGame[player][selection];
 
-  if (currentGameSelection === 'rock') {
-    imageRef.src = './assets/happy-rocks.png';
-    imageRef.alt = 'Happy Rocks';
-  } else if (currentGameSelection === 'paper') {
-    imageRef.src = './assets/happy-paper.png';
-    imageRef.alt = 'Happy Paper';
-  } else if (currentGameSelection === 'scissors') {
-    imageRef.src = './assets/scissors-copy.png';
-    imageRef.alt = 'Happy Scissors';
-  } else if (currentGameSelection === 'lizard') {
-    imageRef.src = './assets/lizard.png';
-    imageRef.alt = 'Happy Lizard';
-  } else if (currentGameSelection === 'alien') {
-    imageRef.src = './assets/happy-alien.png';
-    imageRef.alt = 'Happy Alien';
+  switch (currentGameSelection) {
+    case 'rock':
+      imageRef.src = './assets/happy-rocks.png';
+      imageRef.alt = 'Happy Rocks';
+      break;
+    case 'paper':
+      imageRef.src = './assets/happy-paper.png';
+      imageRef.alt = 'Happy Paper';
+      break;
+    case 'scissors':
+      imageRef.src = './assets/scissors-copy.png';
+      imageRef.alt = 'Happy Scissors';
+      break;
+    case 'lizard':
+      imageRef.src = './assets/lizard.png';
+      imageRef.alt = 'Happy Lizard';
+      break;
+    case 'alien':
+      imageRef.src = './assets/happy-alien.png';
+      imageRef.alt = 'Happy Alien';
+      break;
   }
 }
 
@@ -167,7 +167,7 @@ const hideClassicWinnerDisplayContainer = () => {
 
 const hideDifficultWinnerDisplayContainer = () => {
   displayElements([changeGameButton]);
-  displayGame(difficultGameButton, [fighterSelectionContainer,lizardSelectionButton, alienSelectionButton]);
+  displayGame(difficultGameButton, [fighterSelectionContainer, lizardSelectionButton, alienSelectionButton]);
   hideElements([
     displayTokenOnRock,
     displayTokenOnPaper,
@@ -222,15 +222,21 @@ const checkPlayerSelection = () => {
   if (difficultGameButton.classList.contains('selected')) {
     currentGame.player2.difficultSelected = true;
   }
-  if (rockSelectionButton.classList.contains('selected')) {
-    currentGame.player1.rockSelection = true;
-  } else if (paperSelectionButton.classList.contains('selected')) {
-    currentGame.player1.paperSelection = true;
-  } else if (scissorsSelectionButton.classList.contains('selected')) {
-    currentGame.player1.scissorsSelection = true;
-  } else if (lizardSelectionButton. classList.contains('selected')) {
-    currentGame.player1.lizardSelection = true;
-  } else if (alienSelectionButton.classList.contains('selected')) {
-    currentGame.player1.alienSelection = true;
+
+  switch (true) {
+    case rockSelectionButton.classList.contains('selected'):
+      currentGame.player1.rockSelection = true;
+      break;
+    case paperSelectionButton.classList.contains('selected'):
+      currentGame.player1.paperSelection = true;
+      break;
+    case scissorsSelectionButton.classList.contains('selected'):
+      currentGame.player1.scissorsSelection = true;
+      break;
+    case lizardSelectionButton.classList.contains('selected'):
+      currentGame.player1.lizardSelection = true;
+      break;
+    default:
+      currentGame.player1.alienSelection = true;
   }
 }

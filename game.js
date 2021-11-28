@@ -18,7 +18,7 @@ class Game {
       || humanSelection === 'scissors' && computerSelection === 'scissors'
       || humanSelection === 'lizard' && computerSelection === 'lizard'
       || humanSelection === 'alien' && computerSelection === 'alien'
-    ){
+    ) {
       this.draw = true;
     } else if (
       humanSelection === 'rock' && computerSelection === 'scissors'
@@ -31,7 +31,7 @@ class Game {
       || humanSelection === 'lizard' && computerSelection === 'alien'
       || humanSelection === 'alien' && computerSelection === 'rock'
       || humanSelection === 'alien' && computerSelection === 'scissors'
-    ){
+    ) {
       this.player1.wins++;
       this.humanWon = true;
       this.player1.saveWinsToStorage();
@@ -46,7 +46,7 @@ class Game {
       || humanSelection === 'lizard' && computerSelection === 'scissors'
       || humanSelection === 'alien' && computerSelection === 'paper'
       || humanSelection === 'alien' && computerSelection === 'lizard'
-    ){
+    ) {
       this.player2.wins++;
       this.computerWon = true;
       this.player2.saveWinsToStorage();
@@ -69,7 +69,9 @@ class Game {
   }
 
   selectionTimeout(button) {
-    setTimeout(function() {checkSelection(button)}, 250);
+    setTimeout(function() {
+      checkSelection(button)
+    }, 250);
   }
 
   clearWinnerTimeout() {
@@ -84,7 +86,7 @@ class Game {
     var betterLuckNextTime = new SpeechSynthesisUtterance(`Sorry player 1. You lost. ${taunts[randomIndex]}.`);
     var draw = new SpeechSynthesisUtterance('Looks like it\'s a draw.');
     
-    if (this.humanWon){
+    if (this.humanWon) {
       speechSynthesis.speak(congratulations);
     } else if (this.computerWon) {
       speechSynthesis.speak(betterLuckNextTime);
