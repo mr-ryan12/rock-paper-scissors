@@ -26,49 +26,49 @@ var scissorsSelectionButton = document.getElementById('scissorsSelection');
 // Event Listeners
 window.addEventListener('load', displayWins);
 changeGameButton.addEventListener('click', displayGameSelection);
-classicGameButton.addEventListener('click', function() {
+classicGameButton.addEventListener('click', () => {
   displayGame(classicGameButton, [fighterSelectionContainer]);
 });
-difficultGameButton.addEventListener('click', function() {
+difficultGameButton.addEventListener('click', () => {
   displayGame(difficultGameButton, [fighterSelectionContainer, lizardSelectionButton, alienSelectionButton]);
 });
-rockSelectionButton.addEventListener('click', function() {
+rockSelectionButton.addEventListener('click', () => {
   displayOnClick(displayTokenOnRock, rockSelectionButton)
 });
-paperSelectionButton.addEventListener('click', function() {
+paperSelectionButton.addEventListener('click', () => {
   displayOnClick(displayTokenOnPaper, paperSelectionButton)
 });
-alienSelectionButton.addEventListener('click', function() {
+alienSelectionButton.addEventListener('click', () => {
   displayOnClick(displayTokenOnAlien, alienSelectionButton)
 });
-lizardSelectionButton.addEventListener('click', function() {
+lizardSelectionButton.addEventListener('click', () => {
   displayOnClick(displayTokenOnLizard, lizardSelectionButton)
 });
-scissorsSelectionButton.addEventListener('click', function() {
+scissorsSelectionButton.addEventListener('click', () => {
   displayOnClick(displayTokenOnScissors, scissorsSelectionButton)
 });
 
 var currentGame = new Game();
 
-function displayElements(elements) {
+const displayElements = (elements) => {
   for (var i = 0; i < elements.length; i++) {
     elements[i].classList.remove('hidden');
   }
 }
 
-function hideElements(elements) {
+const hideElements = (elements) => {
   for (var i = 0; i < elements.length; i++) {
     elements[i].classList.add('hidden');
   }
 }
 
-function resetButtons(buttons) {
+const resetButtons = (buttons) => {
   for (var i = 0; i < buttons.length; i++) {
     buttons[i].classList.remove('selected');
   }
 }
 
-function displayOnClick(displayTokenOnElement, fighterSelectionButton) {
+const displayOnClick = (displayTokenOnElement, fighterSelectionButton) => {
   if (displayTokenOnElement.classList.contains('hidden') && !currentGame.isInProgress) {
     currentGame.isInProgress = true;  
     displayElements([displayTokenOnElement]);
@@ -76,20 +76,20 @@ function displayOnClick(displayTokenOnElement, fighterSelectionButton) {
   }
 }
 
-function displayGame(button, elements) {
+const displayGame = (button, elements) => {
   button.classList.add('selected');
   hideElements([gameSelectionContainer]);
   displayElements(elements);
   chooseYourGameText.innerText = 'Choose your fighter!';
 }
 
-function checkSelection(selection) {
+const checkSelection = (selection) => {
   selection.classList.add('selected');
   checkPlayerSelection();
   gamePlay();
 }
 
-function gamePlay() {
+const gamePlay = () => {
   currentGame.winConditions();
   displayWinnerContainer();
   displayWins();
@@ -104,18 +104,21 @@ function gamePlay() {
   ]);
 }
 
-function displayWinnerText() {
+const displayWinnerText = () => {
   currentGame.browserSpeak();
-  if (currentGame.humanWon) {
-    chooseYourGameText.innerText = `${currentGame.player1.token} Human won this round! ${currentGame.player1.token}`;
-  } else if (currentGame.computerWon) {
-    chooseYourGameText.innerText = `${currentGame.player2.token} Computer won this round! ${currentGame.player2.token}`;
-  } else if (currentGame.draw) {
-    chooseYourGameText.innerText = `😬 It's a draw! 😬`;
+  switch (true) {
+    case currentGame.humanWon:
+      chooseYourGameText.innerText = `${currentGame.player1.token} Human won this round! ${currentGame.player1.token}`;
+      break;
+    case currentGame.computerWon:
+      chooseYourGameText.innerText = `${currentGame.player2.token} Computer won this round! ${currentGame.player2.token}`;
+      break;
+    default:
+      chooseYourGameText.innerText = `😬 It's a draw! 😬`;
   }
 }
 
-function displayFighter(player, selection, imageRef) {
+const displayFighter = (player, selection, imageRef) => {
   var currentGameSelection = currentGame[player][selection];
 
   if (currentGameSelection === 'rock') {
@@ -136,7 +139,7 @@ function displayFighter(player, selection, imageRef) {
   }
 }
 
-function displayWinnerContainer() {
+const displayWinnerContainer = () => {
   hideElements([
     gameSelectionContainer,
     fighterSelectionContainer,
@@ -149,7 +152,7 @@ function displayWinnerContainer() {
   displayFighter('player2', 'computerSelection', computerSelectionImage);
 }
 
-function hideClassicWinnerDisplayContainer() {
+const hideClassicWinnerDisplayContainer = () => {
   hideElements([
     displayTokenOnRock,
     displayTokenOnPaper,
@@ -162,7 +165,7 @@ function hideClassicWinnerDisplayContainer() {
   displayGame(classicGameButton, [fighterSelectionContainer]);
 }
 
-function hideDifficultWinnerDisplayContainer() {
+const hideDifficultWinnerDisplayContainer = () => {
   displayElements([changeGameButton]);
   displayGame(difficultGameButton, [fighterSelectionContainer,lizardSelectionButton, alienSelectionButton]);
   hideElements([
@@ -175,7 +178,7 @@ function hideDifficultWinnerDisplayContainer() {
   ]);
 }
 
-function removeGameSelection() {
+const removeGameSelection = () => {
   if (classicGameButton.classList.contains('selected')) {
     return classicGameButton.classList.remove('selected');
   } else if (difficultGameButton.classList.contains('selected')) {
@@ -207,7 +210,7 @@ function displayWins() {
   computerWins.innerText = `Wins: ${currentGame.player2.wins}`;
 }
 
-function setWinnerTimeout() {
+const setWinnerTimeout = () => {
   if (classicGameButton.classList.contains('selected')) {
     currentGame.timeout = setTimeout(hideClassicWinnerDisplayContainer, 2000);
   } else if (difficultGameButton.classList.contains('selected')) {
@@ -215,7 +218,7 @@ function setWinnerTimeout() {
   }
 }
 
-function checkPlayerSelection() {
+const checkPlayerSelection = () => {
   if (difficultGameButton.classList.contains('selected')) {
     currentGame.player2.difficultSelected = true;
   }
