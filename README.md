@@ -32,7 +32,8 @@ Displays the winner of the round and automatically displays the selections again
 ![winner-view](https://user-images.githubusercontent.com/62816754/141864569-10dc8f98-434e-4fe6-8eb0-26bed79fee73.gif)
 
 ## Links  
-Checkout the Turing spec sheet [here](https://frontend.turing.edu/projects/module-1/rock-paper-scissors-solo.html)
+Checkout the Turing spec sheet [here](https://frontend.turing.edu/projects/module-1/rock-paper-scissors-solo.html)  
+See it in action by clicking [here](https://mr-ryan12.github.io/rock-paper-scissors/)
   
 ## Future Additions
 - Unlock a secret character after a specific set of wins 
